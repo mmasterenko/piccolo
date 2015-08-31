@@ -1,2 +1,6 @@
 {% extends 'vapp/base.html' %}
+{% load staticfiles %}
 {% block title %}<title>Main - Versilia</title>{% endblock %}
+{% block head %}
+    <script src="{% static 'js/makeup.js' %}"></script>
+{% endblock %}
