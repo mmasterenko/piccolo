@@ -1,10 +1,15 @@
+/*
+    укажите путь к файлу макету
+ */
+var IMAGE_URL = 'static/js/main.png';
+
 $(document).ready(function() {
 
     var elem = $('<div>');
     $('body').prepend(elem);
 
     var css = {
-        'background-image': "url('static/js/main.png')",
+        'background-image': "url('" + IMAGE_URL + "')",
         'background-origin': 'border-box',
         'background-repeat': 'no-repeat',
         'background-position-x': 'center',
@@ -27,11 +32,17 @@ $(document).ready(function() {
     $(img).load(function () {
         $(elem).css('height', img.height);
     });
-    /*
+
     $(document).keypress(function(e) {
-        //if(e.which == 13) {
-        //    alert('You pressed enter!' + e.which);
-        //}
+        // if key '~' pressed: toggle hide/show
+        if(e.which == 96) {
+            $(elem).toggle();
+        }
+        // if key '1' pressed: toggle z-index -99/99
+        if(e.which == 49) {
+            var n = $(elem).css('z-index');
+            if(n<0) n = 99; else n = -99;
+            $(elem).css('z-index', n);
+        }
     });
-    */
 });
