@@ -27,15 +27,36 @@
     <script src="{% static 'lib/jquery/1.11.3/jquery.js' %}"></script>
     <script src="{% static 'lib/bootstrap/js/bootstrap.js' %}"></script>
 
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 
     {% block head %} {% endblock %}
 </head>
 <body>
 
-{% block body-header %}  {% endblock %}
+<div class="main-wrapper">
+
+{% block body-header %}
+    <div class="container-fluid">
+        <div id="top-bar" class="row header-gray"></div>
+        <div class="row main-logo-bar">
+            <div class="col-sm-4">
+                <div id="header-phone">
+                    <span class="phone-text green-text">(812)749-87-18</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'images/header-logo.png' %}" alt="Piccolo-Logo">
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+{% endblock %}
 {% block content %} {% endblock %}
 {% block body-footer %} {% endblock %}
+
+</div>
 
 </body>
 </html>

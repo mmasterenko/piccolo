@@ -1,0 +1,39 @@
+.main-wrapper {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.main-logo-bar {
+    height: 151px;
+}
+
+.main-logo-bar img {
+    margin-left: 82px;
+    margin-top: 7px;
+}
+
+.header-gray {
+    background-color: #ededed;
+}
+
+.green-text {
+    color: #287c1f;
+}
+
+#header-phone {
+    background-image: url('../images/phone-icon.png');
+    background-repeat: no-repeat;
+    background-position-y: center;
+    margin-top: 62px;
+    margin-left: 21px;
+    padding-left: 33px;
+}
+
+.phone-text {
+    font-family: Roboto, sans-serif;
+    font-size: 24px;
+}
+
+#top-bar {
+    height: 51px;
+}
