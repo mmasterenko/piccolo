@@ -109,3 +109,81 @@ ul.horiz-menu li {
     border-color: #287c1f;
     background-color: #287c1f;
 }
+
+/* * * * * * * *
+ * news-block  *
+ * * * * * * * */
+
+#news-block {
+    margin-top: 19px;
+}
+
+#news-block h3 {
+    margin-left: 31px;
+    font-weight: 300;
+    font-size: 26px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 15px;
+    width: 270px;
+}
+
+#news-block .x-row {
+    margin-top: 40px;
+    margin-left: 17px;
+}
+
+#news-block h4 {
+    margin-top: 18px;
+    margin-bottom: 16px;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+#news-block p {
+    font-size: 16px;
+    color: #888888;
+    margin-bottom: 15px;
+    line-height: 19px;
+}
+
+#news-block p:first-letter {
+    color: #ffffff;
+    background-color: #287c1f;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 11px 8px;
+    margin-right: 14px;
+    float: left;
+}
+
+#news-block .x-news-col {
+    padding: 0;
+    width: 370px;
+    margin-left: 16px;
+    margin-right: 14px;
+}
+
+#news-block .date {
+    background-image: url('../images/calendar-icon.png');
+    background-repeat: no-repeat;
+    background-position-y: 1px;
+    padding-left: 21px;
+    color: #287c1f;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+#news-block .x-button {
+    background-color: #287c1f;
+    border: none;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 300;
+    display: block;
+    padding: 11px 18px 10px;
+    margin: 36px auto;
+}
+
+#news-block .x-button:hover {
+    background-color: #21621A;
+}
