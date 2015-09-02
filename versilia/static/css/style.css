@@ -1,6 +1,7 @@
 .main-wrapper {
     width: 1280px;
     margin: 0 auto;
+    font-family: Roboto, sans-serif;
 }
 
 .main-logo-bar {
@@ -10,6 +11,10 @@
 .main-logo-bar img {
     margin-left: 82px;
     margin-top: 7px;
+}
+
+.x-float-left {
+    float: left;
 }
 
 .header-gray {
@@ -37,3 +42,46 @@
 #top-bar {
     height: 51px;
 }
+
+/* * * * * * *
+ * main-menu *
+ * * * * * * */
+
+#main-menu {
+    font-size: 24px;
+    margin: 0;
+    border: none;
+}
+
+#main-menu ul {
+    margin-top: 1px;
+    margin-left: 59px;
+}
+
+#main-menu ul li {
+    padding: 29px 22px;
+}
+
+#main-menu ul li a {
+    padding: 0;
+    color: #333333;
+}
+
+#main-menu ul li:hover {
+    background-color: #e4e4e4;
+}
+
+#main-menu a:hover, #main-menu a:focus {
+    text-decoration: none;
+}
+
+/*
+ul.horiz-menu {
+    list-style-type: none;
+}
+
+ul.horiz-menu li {
+    display: block;
+    float: left;
+}
+*/
