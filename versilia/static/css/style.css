@@ -118,7 +118,7 @@ ul.horiz-menu li {
     margin-top: 19px;
 }
 
-#news-block h3 {
+#news-block h3, #assort-block h3 {
     margin-left: 31px;
     font-weight: 300;
     font-size: 26px;
@@ -173,7 +173,7 @@ ul.horiz-menu li {
     font-weight: 300;
 }
 
-#news-block .x-button {
+.x-button {
     background-color: #287c1f;
     border: none;
     color: #ffffff;
@@ -181,9 +181,78 @@ ul.horiz-menu li {
     font-weight: 300;
     display: block;
     padding: 11px 18px 10px;
-    margin: 36px auto;
 }
 
-#news-block .x-button:hover {
+.x-button:hover {
     background-color: #21621A;
+}
+
+#news-block .x-button {
+    margin: 36px auto 34px;
+}
+
+/* * * * * * * * *
+ * assort-block  *
+ * * * * * * * * */
+
+#assort-block h3 {
+    margin-bottom: 3px;
+}
+
+#assort-block nav {
+    border: none;
+    background-color: transparent;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+#assort-block ul li a {
+    padding: 15px 16px;
+}
+
+#assort-block ul li.x-active a {
+    font-weight: 400;
+    color: #287c1f;
+}
+
+#assort-block img {
+    float: left;
+    clear: left;
+    border: 1px solid #b7b7b7;
+    margin-right: 30px;
+    margin-top: 8px;
+}
+
+#assort-block h4 {
+    font-weight: 300;
+    font-size: 17px;
+    margin-top: 7px;
+    margin-bottom: 17px;
+}
+
+#assort-block table {
+    font-size: 15px;
+    width: 210px;
+}
+
+#assort-block table tr td:last-child {
+    color: #287c1f;
+    text-align: right;
+}
+
+#assort-block .x-assort-row {
+    padding-left: 32px;
+    margin-top: 20px;
+    margin-bottom: 31px;
+}
+
+#assort-block .x-assort-col {
+    width: 385px;
+    padding: 0;
+    margin-left: 15px;
+}
+
+#assort-block .x-button {
+    margin: 19px auto 34px;
+    padding: 11px 28px 10px;
 }
