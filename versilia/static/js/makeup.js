@@ -33,9 +33,9 @@ $(document).ready(function() {
         $(elem).css('height', img.height);
     });
 
-    $(document).keypress(function(e) {
-        // if key '~' pressed: toggle hide/show
-        if(e.which == 96) {
+    var handler = function(e) {
+        // if key '2' pressed: toggle hide/show
+        if(e.which == 50) {
             $(elem).toggle();
         }
         // if key '1' pressed: toggle z-index -99/99
@@ -44,5 +44,7 @@ $(document).ready(function() {
             if(n<0) n = 99; else n = -99;
             $(elem).css('z-index', n);
         }
-    });
+    };
+
+    $(document).keypress(handler);
 });
