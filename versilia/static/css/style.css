@@ -87,3 +87,25 @@ ul.horiz-menu li {
     float: left;
 }
 */
+
+/* * * * * * *
+ * carousel  *
+ * * * * * * */
+
+#my-carousel ol {
+    bottom: 0;
+    left: 640px;
+}
+
+#my-carousel ol li {
+    border-color: #bfbfbf;
+    background-color: #bfbfbf;
+    width: 14px;
+    height: 14px;
+    margin: 0 3px;
+}
+
+#my-carousel ol li.active {
+    border-color: #287c1f;
+    background-color: #287c1f;
+}
