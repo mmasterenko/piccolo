@@ -53,10 +53,44 @@
         </div>
     </div>
 {% endblock %}
+
 {% block content %} {% endblock %}
-{% block body-footer %} {% endblock %}
 
 </div>
+
+{% block body-footer %}
+    <div id="footer">
+        <div class="container-fluid">
+            <div class="row footer">
+                <div class="col-sm-3">
+                    <img id="footer-logo" src="{% static 'images/footer-logo.png' %}" alt="piccolo-logo">
+                </div>
+                <div class="col-sm-6">
+                    <h4>КОНТАКТЫ</h4>
+                    <div class="address contacts">
+                        <span>АДРЕСС:</span>
+                        <span>г.Санкт-Петербург, Красное Село, ул.Геологическая 75</span>
+                    </div>
+                    <div class="phone contacts">
+                        <span>ТЕЛЕФОН:</span>
+                        <span>(812)749-87-18</span>
+                    </div>
+                    <div class="email contacts">
+                        <span>E-MAIL:</span>
+                        <a href="mailto:info@piccolospb.ru">info@piccolospb.ru</a>
+                    </div>
+                </div>
+                <div class="col-sm-3 x-map-col">
+                    <h4>СХЕМА ПРОЕЗДА</h4>
+                    <img src="{% static 'images/map.jpg' %}" alt="map">
+                </div>
+            </div>
+            <div class="row license">
+                piccolospb &copy; 2015 Все права защищены
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
 </body>
 </html>
