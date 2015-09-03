@@ -1,6 +1,6 @@
 {% extends 'vapp/base.html' %}
 {% load staticfiles %}
-{% block title %}<title>Main - Versilia</title>{% endblock %}
+{% block title %}<title>Main</title>{% endblock %}
 {% block head %}
     <script src="{% static 'js/makeup.js' %}"></script>
 {% endblock %}
@@ -9,12 +9,12 @@
     <nav id="main-menu" class="navbar navbar-default">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li><a href="#">ГЛАВНАЯ</a></li>
-                <li><a href="#">О НАС</a></li>
-                <li><a href="#">АССОРТИМЕНТ</a></li>
-                <li><a href="#">КАТАЛОГ</a></li>
-                <li><a href="#">ВАКАНСИИ</a></li>
-                <li><a href="#">КОНТАКТЫ</a></li>
+                <li class="x-active"><a href="javascript:void(0)">ГЛАВНАЯ</a></li>
+                <li><a href="javascript:void(0)">О НАС</a></li>
+                <li><a href="javascript:void(0)">АССОРТИМЕНТ</a></li>
+                <li><a href="javascript:void(0)">КАТАЛОГ</a></li>
+                <li><a href="{% url 'news' %}">НОВОСТИ</a></li>
+                <li><a href="javascript:void(0)">КОНТАКТЫ</a></li>
             </ul>
         </div>
     </nav>

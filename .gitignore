@@ -2,6 +2,9 @@ venv
 *.pyc
 staticfiles
 .env
-db.sqlite3
 .idea
+db.sqlite3
 
+versilia/static/js/makeup.js
+versilia/static/js/news.png
+versilia/static/js/main.png

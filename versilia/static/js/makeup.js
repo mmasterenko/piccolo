@@ -1,7 +1,7 @@
 /*
     укажите путь к файлу макету
  */
-var IMAGE_URL = 'static/js/main.png';
+var IMAGE_URL = location.origin + '/static/js/news.png';
 
 $(document).ready(function() {
 
@@ -33,13 +33,15 @@ $(document).ready(function() {
         $(elem).css('height', img.height);
     });
 
+    $(elem).toggle();
+
     var handler = function(e) {
-        // if key '2' pressed: toggle hide/show
-        if(e.which == 50) {
+        // if key '1' pressed: toggle hide/show
+        if(e.which == 49) {
             $(elem).toggle();
         }
-        // if key '1' pressed: toggle z-index -99/99
-        if(e.which == 49) {
+        // if key '2' pressed: toggle z-index -99/99
+        if(e.which == 50) {
             var n = $(elem).css('z-index');
             if(n<0) n = 99; else n = -99;
             $(elem).css('z-index', n);

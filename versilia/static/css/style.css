@@ -218,7 +218,7 @@ ul.horiz-menu li {
     padding: 15px 16px;
 }
 
-#assort-block ul li.x-active a {
+#assort-block ul li.x-active a, #main-menu ul li.x-active a {
     font-weight: 400;
     color: #287c1f;
 }

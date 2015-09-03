@@ -19,5 +19,7 @@ from vapp import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.main, name='main')
+
+    url(r'^$', views.main, name='main'),
+    url(r'^news/$', views.news, name='news')
 ]
