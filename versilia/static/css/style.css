@@ -65,12 +65,27 @@ body, html {
     background-color: #ededed;
 }
 
+#main-menu.assortiment-menu {
+    font-size: 16px;
+    font-weight: 300;
+}
+
 #main-menu ul {
     margin-top: 1px;
     margin-left: 59px;
 }
 
-#main-menu ul li {
+#main-menu.assortiment-menu ul {
+    margin-left: 10px;
+}
+
+#main-menu.assortiment-menu ul li:hover {
+    font-weight: 400;
+    background-color: #ededed;
+    padding: 29px 21px;
+}
+
+#main-menu ul li, #main-menu.assortiment-menu ul li.x-active {
     padding: 29px 22px;
 }
 
