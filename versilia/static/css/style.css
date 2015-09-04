@@ -4,10 +4,9 @@ body, html {
 
 .main-wrapper {
     width: 1280px;
-    margin: 0 auto;
+    margin: 0 auto -309px;
     font-family: Roboto, sans-serif;
     min-height: 100%;
-    margin-bottom: -309px;
 }
 
 .main-wrapper:after {
@@ -38,8 +37,7 @@ body, html {
 }
 
 #header-phone {
-    background-image: url('../images/phone-icon.png');
-    background-repeat: no-repeat;
+    background: url('../images/phone-icon.png') no-repeat;
     background-position-y: center;
     margin-top: 62px;
     margin-left: 21px;
@@ -130,7 +128,7 @@ ul.horiz-menu li {
     margin-top: 19px;
 }
 
-#news-block h3, #assort-block h3 {
+#news-block h3, #assort-block h3, .news-block h3 {
     margin-left: 31px;
     font-weight: 300;
     font-size: 26px;
@@ -175,9 +173,8 @@ ul.horiz-menu li {
     margin-right: 14px;
 }
 
-#news-block .date {
-    background-image: url('../images/calendar-icon.png');
-    background-repeat: no-repeat;
+#news-block .date, .news-block .date {
+    background: url('../images/calendar-icon.png') no-repeat;
     background-position-y: 1px;
     padding-left: 21px;
     color: #287c1f;
@@ -201,6 +198,45 @@ ul.horiz-menu li {
 
 #news-block .x-button {
     margin: 36px auto 34px;
+}
+
+div.news-block img.news-img {
+    float: left;
+    margin-right: 31px;
+    margin-bottom: 15px;
+}
+
+div.news-block p.full-news-text {
+    font-size: 20px;
+    font-weight: 300;
+    color: #888888;
+    line-height: 26px;
+}
+
+div.news-block .news-block-p {
+    margin-top: 22px;
+    margin-left: 32px;
+    margin-right: 30px;
+}
+
+div.news-block .news-row {
+    margin-top: 20px;
+}
+
+div.news-block .news-row .news-row-in {
+    position: relative;
+}
+
+div.news-block .news-row .news-row-in h3 {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+div.news-block .news-row .news-row-in .date {
+    display: inline-block;
+    position: absolute;
+    top: 25px;
+    right: 59px;
 }
 
 /* * * * * * * * *
@@ -312,8 +348,7 @@ ul.horiz-menu li {
     font-size: 17px;
     margin-left: 12px;
     height: 29px;
-    background-image: url('../images/icons.png');
-    background-repeat: no-repeat;
+    background: url('../images/icons.png') no-repeat;
 }
 
 #footer .contacts span:first-child {
@@ -345,3 +380,54 @@ ul.horiz-menu li {
 #footer .x-map-col h4 {
     padding-left: 0;
 }
+
+/* * * * * * *
+ * news page *
+ * * * * * * */
+
+.x-pageheader {
+    height: 180px;
+    background: url('../images/main-picture.jpg') no-repeat;
+    background-position-y: -45px;
+    position: relative;
+}
+
+.x-pageheader div.h3, .x-pageheader h2 {
+    display: inline;
+    color: white;
+    font-size: 70px;
+}
+
+.x-pageheader h2 {
+    position: absolute;
+    top: 74px;
+    right: 65px;
+}
+
+.x-pageheader a {
+    color: white;
+    position: absolute;
+    top: 51px;
+    left: 21px;
+}
+
+.x-pageheader a:hover, .x-pageheader a:focus {
+    text-decoration: none;
+}
+
+.x-pageheader a div.h3 {
+    font-weight: 300;
+    margin-top: 121px;
+}
+
+.x-pageheader a div.h3 span:first-child {
+    font-size: 50px;
+}
+
+.x-pageheader a div.h3 span:last-child {
+    font-size: 36px;
+    position: relative;
+    top: -9px;
+    right: 18px;
+}
+
