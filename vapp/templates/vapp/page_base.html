@@ -1,0 +1,17 @@
+{% extends 'vapp/base.html' %}
+
+{% block page_header %}
+
+    <div class="x-pageheader">
+        <a href="{% url 'main' %}">
+            <div class="h3">
+                <span class="glyphicon glyphicon-menu-left"></span>
+                <span>НА ГЛАВНУЮ</span>
+            </div>
+        </a>
+        <h2>
+            {% block page_header_text %}  {% endblock %}
+        </h2>
+    </div>
+
+{% endblock %}

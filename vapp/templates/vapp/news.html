@@ -1,21 +1,9 @@
-{% extends 'vapp/base.html' %}
+{% extends 'vapp/page_base.html' %}
 {% load staticfiles %}
-{% block title %}<title>News</title>{% endblock %}
-{% block head %}
-    <script src="{% static 'js/makeup.js' %}"></script>
-{% endblock %}
+{% block title %} News {% endblock %}
+{% block page_header_text %} НОВОСТИ {% endblock %}
 
 {% block content %}
-    <div class="x-pageheader">
-        <a href="{% url 'main' %}">
-            <div class="h3">
-                <span class="glyphicon glyphicon-menu-left"></span>
-                <span>НА ГЛАВНУЮ</span>
-            </div>
-        </a>
-        <h2>НОВОСТИ</h2>
-    </div>
-
     <div class="container-fluid news-block">
         <div class="row news-row">
             <div class="col-sm-12 news-row-in">
