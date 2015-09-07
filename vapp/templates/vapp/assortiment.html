@@ -14,39 +14,40 @@
     <nav id="main-menu" class="navbar navbar-default assortiment-menu">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li class="x-active"><a href="javascript:void(0)">ПЕЧЕНЬЕ СДОБНО-СЛОЕНОЕ</a></li>
-                <li><a href="javascript:void(0)">ПЕЧЕНЬЕ ПЕСОЧНОЕ</a></li>
-                <li><a href="javascript:void(0)">ПЕЧЕНЬЕ СДОБНОЕ ТВОРОЖНОЕ</a></li>
-                <li><a href="javascript:void(0)">КРУАССАНЫ</a></li>
+                {% for category in categories %}
+                    <li {% if page_id == category.id %} class="x-active" {% endif %}>
+                        <a href="{% url 'assortiment' category.id %}">{{ category.name }}</a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </nav>
 
     <div id="assort-block" class="container-fluid assort-page">
         {% for cookie_row in cookies %}
-        <div class="row x-assort-page-row">
-            {% for cookie in cookie_row %}
-                <div class="col-sm-4 x-assort-page-col">
-                <img class="cake-img" src='{{ cookie.img }}' alt="cookie">
-                <h4>{{ cookie.name | upper }}</h4>
-                <img class="icon-img" src="{% static 'images/assort-icon-1.png' %}" alt="icon">
-                <table>
-                    <tr>
-                        <td>Вес единицы</td>
-                        <td>{{ cookie.pcsWeight }}</td>
-                    </tr>
-                    <tr>
-                        <td>Единиц в ящике</td>
-                        <td>{{ cookie.pcsPerBox }}</td>
-                    </tr>
-                    <tr>
-                        <td>Срок реализации</td>
-                        <td>{{ cookie.shelfLife }}</td>
-                    </tr>
-                </table>
+            <div class="row x-assort-page-row">
+                {% for cookie in cookie_row %}
+                    <div class="col-sm-4 x-assort-page-col">
+                        <img class="cake-img" src='{{ cookie.img }}' alt="cookie">
+                        <h4>{{ cookie.name | upper }}</h4>
+                        <img class="icon-img" src="{% static 'images/assort-icon-1.png' %}" alt="icon">
+                        <table>
+                            <tr>
+                                <td>Вес единицы</td>
+                                <td>{{ cookie.pcsWeight }}</td>
+                            </tr>
+                            <tr>
+                                <td>Единиц в ящике</td>
+                                <td>{{ cookie.pcsPerBox }}</td>
+                            </tr>
+                            <tr>
+                                <td>Срок реализации</td>
+                                <td>{{ cookie.shelfLife }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
         {% endfor %}
         <!--div class="row x-assort-page-row">
             <div class="col-sm-4 x-assort-page-col">

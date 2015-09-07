@@ -487,6 +487,9 @@ div.news-block .news-row .news-row-in .date {
     float: none;
     clear: none;
     margin-right: 0;
+    #width: 369px;
+    #height: 210px;
+    min-height: 210px;  /* todo: fix it */
 }
 
 #assort-block.assort-page .x-assort-page-row img.icon-img {
