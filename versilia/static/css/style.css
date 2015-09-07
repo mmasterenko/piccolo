@@ -453,7 +453,8 @@ div.news-block .news-row .news-row-in .date {
 #assort-block.assort-page .x-assort-page-row {
     margin-top: 36px;
     margin-bottom: 59px;
-    padding: 0 37px;
+    padding-left: 47px;
+    padding-right: 25px;
 }
 
 #assort-block.assort-page .x-assort-page-row .x-assort-page-col {
@@ -470,7 +471,6 @@ div.news-block .news-row .news-row-in .date {
 
 #assort-block.assort-page .x-assort-page-row h4 {
     margin-top: 18px;
-    margin-left: 10px;
 }
 
 #assort-block.assort-page .x-assort-page-row img {
@@ -480,13 +480,11 @@ div.news-block .news-row .news-row-in .date {
 #assort-block.assort-page .x-assort-page-row img.cake-img {
     float: none;
     clear: none;
-    margin-left: 11px;
     margin-right: 0;
 }
 
 #assort-block.assort-page .x-assort-page-row img.icon-img {
     margin-top: 5px;
-    margin-left: 10px;
     margin-right: 19px;
 }
 
