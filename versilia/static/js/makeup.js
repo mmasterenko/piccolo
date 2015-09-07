@@ -1,7 +1,7 @@
 /*
     укажите путь к файлу макету
  */
-var IMAGE_URL = location.origin + '/static/js/news.png';
+var IMAGE_URL = location.origin + '/static/js/assortiment.png';
 
 $(document).ready(function() {
 
