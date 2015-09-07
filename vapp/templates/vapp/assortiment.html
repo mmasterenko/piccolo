@@ -1,5 +1,10 @@
 {% extends 'vapp/page_base.html' %}
 {% load staticfiles %}
+
+{% block head %}
+    <script src="{% static 'js/makeup.js' %}"></script>
+{% endblock %}
+
 {% block title %} АССОРТИМЕНТ {% endblock %}
 
 {% block page_header_text %} АССОРТИМЕНТ {% endblock %}
@@ -18,66 +23,32 @@
     </nav>
 
     <div id="assort-block" class="container-fluid assort-page">
+        {% for cookie_row in cookies %}
         <div class="row x-assort-page-row">
-            <div class="col-sm-4 x-assort-page-col">
-                <img class="cake-img" src="{% static 'images/dummy-cake.jpg' %}" alt="cookie">
-                <h4>НАЗВАНИЕ ПЕЧЕНЬЯ</h4>
+            {% for cookie in cookie_row %}
+                <div class="col-sm-4 x-assort-page-col">
+                <img class="cake-img" src='{{ cookie.img }}' alt="cookie">
+                <h4>{{ cookie.name | upper }}</h4>
                 <img class="icon-img" src="{% static 'images/assort-icon-1.png' %}" alt="icon">
                 <table>
                     <tr>
                         <td>Вес единицы</td>
-                        <td>1000 г</td>
+                        <td>{{ cookie.pcsWeight }}</td>
                     </tr>
                     <tr>
                         <td>Единиц в ящике</td>
-                        <td>3,5</td>
+                        <td>{{ cookie.pcsPerBox }}</td>
                     </tr>
                     <tr>
                         <td>Срок реализации</td>
-                        <td>45 дней</td>
+                        <td>{{ cookie.shelfLife }}</td>
                     </tr>
                 </table>
             </div>
-            <div class="col-sm-4 x-assort-page-col">
-                <img class="cake-img" src="{% static 'images/dummy-cake.jpg' %}" alt="cookie">
-                <h4>НАЗВАНИЕ ПЕЧЕНЬЯ</h4>
-                <img class="icon-img" src="{% static 'images/assort-icon-1.png' %}" alt="icon">
-                <table>
-                    <tr>
-                        <td>Вес единицы</td>
-                        <td>1000 г</td>
-                    </tr>
-                    <tr>
-                        <td>Единиц в ящике</td>
-                        <td>3,5</td>
-                    </tr>
-                    <tr>
-                        <td>Срок реализации</td>
-                        <td>45 дней</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-sm-4 x-assort-page-col">
-                <img class="cake-img" src="{% static 'images/dummy-cake.jpg' %}" alt="cookie">
-                <h4>НАЗВАНИЕ ПЕЧЕНЬЯ</h4>
-                <img class="icon-img" src="{% static 'images/assort-icon-1.png' %}" alt="icon">
-                <table>
-                    <tr>
-                        <td>Вес единицы</td>
-                        <td>1000 г</td>
-                    </tr>
-                    <tr>
-                        <td>Единиц в ящике</td>
-                        <td>3,5</td>
-                    </tr>
-                    <tr>
-                        <td>Срок реализации</td>
-                        <td>45 дней</td>
-                    </tr>
-                </table>
-            </div>
+            {% endfor %}
         </div>
-        <div class="row x-assort-page-row">
+        {% endfor %}
+        <!--div class="row x-assort-page-row">
             <div class="col-sm-4 x-assort-page-col">
                 <img class="cake-img" src="{% static 'images/dummy-cake.jpg' %}" alt="cookie">
                 <h4>НАЗВАНИЕ ПЕЧЕНЬЯ</h4>
@@ -135,7 +106,7 @@
                     </tr>
                 </table>
             </div>
-        </div>
+        </div-->
     </div>
 
 {% endblock %}

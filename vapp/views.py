@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 
 
@@ -10,7 +12,23 @@ def news(req):
 
 
 def assortiment(req):
-    return render(req, 'vapp/assortiment.html')
+    context = {'cookies': [
+        [
+            {'img': '../static/pics/big/sorrento-big.jpg',
+             'name': u'Сорренто',
+             'pcsWeight': u'1000г',
+             'pcsPerBox': '2,3',
+             'shelfLife': u'90 дней'
+             },
+            {'img': '../static/pics/big/chertaldo-big.jpg',
+             'name': u'Чертальдо',
+             'pcsWeight': u'1000г',
+             'pcsPerBox': '2,5',
+             'shelfLife': u'90 дней'
+             }
+        ],
+    ]}
+    return render(req, 'vapp/assortiment.html', context=context)
 
 
 def about(req):
