@@ -11,3 +11,12 @@ def news(req):
 
 def assortiment(req):
     return render(req, 'vapp/assortiment.html')
+
+
+def about(req):
+    return render(req, 'vapp/about.html')
+
+
+def job(req):
+    return render(req, 'vapp/job.html')
+

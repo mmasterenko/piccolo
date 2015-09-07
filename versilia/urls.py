@@ -22,5 +22,7 @@ urlpatterns = [
 
     url(r'^$', views.main, name='main'),
     url(r'^news/$', views.news, name='news'),
-    url(r'^assortiment/$', views.assortiment, name='assortiment')
+    url(r'^assortiment/$', views.assortiment, name='assortiment'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^job/$', views.job, name='job')
 ]

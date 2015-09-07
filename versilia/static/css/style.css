@@ -489,3 +489,33 @@ div.news-block .news-row .news-row-in .date {
     margin-left: 10px;
     margin-right: 19px;
 }
+
+/* * * * * * * *
+ * about-page  *
+ * * * * * * * */
+
+#about-page {
+    margin-top: 50px;
+    color: #888888;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+}
+
+/* * * * * * * *
+ * job-page  *
+ * * * * * * * */
+
+#job-page {
+    margin-top: 50px;
+    color: #888888;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+}
+
+#job-page a {
+    color: #287c1f;
+    font-weight: 400;
+    padding-left: 10px;
+}
