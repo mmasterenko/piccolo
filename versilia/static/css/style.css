@@ -417,6 +417,7 @@ div.news-block .news-row .news-row-in .date {
     position: absolute;
     top: 74px;
     right: 65px;
+    text-shadow: 0 1px 40px #888888;
 }
 
 .x-pageheader a {
@@ -424,6 +425,11 @@ div.news-block .news-row .news-row-in .date {
     position: absolute;
     top: 51px;
     left: 21px;
+}
+
+.x-pageheader a:hover {
+    opacity: .9;
+    text-shadow: 0 1px 2px rgba(0,0,0, 0.9);
 }
 
 .x-pageheader a:hover, .x-pageheader a:focus {

@@ -1,5 +1,10 @@
 {% extends 'vapp/page_base.html' %}
 {% load staticfiles %}
+
+{% block head %}
+    <script src="{% static 'js/makeup.js' %}"></script>
+{% endblock %}
+
 {% block title %} НОВОСТИ {% endblock %}
 {% block page_header_text %} НОВОСТИ {% endblock %}
 
