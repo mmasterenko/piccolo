@@ -200,6 +200,10 @@ body, html {
     background-color: #21621A;
 }
 
+#news-block .x-news-col a:hover, #assort-block .x-assort-col a:hover {
+    text-decoration: none !important;
+}
+
 #news-block .x-button {
     margin: 36px auto 34px;
 }
