@@ -46,6 +46,9 @@ $(document).ready(function() {
             if(n<0) n = 99; else n = -99;
             $(elem).css('z-index', n);
         }
+        if(e.which == 53) {
+            $("#assort-block.assort-page .x-assort-page-row .x-assort-page-col .x-frame").toggleClass('x-border');
+        }
     };
 
     $(document).keypress(handler);
