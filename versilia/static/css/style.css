@@ -72,7 +72,7 @@ body, html {
 
 #main-menu ul {
     margin-top: 1px;
-    margin-left: 59px;
+    margin-left: 10px; /* 59 px */
 }
 
 #main-menu.assortiment-menu ul {
@@ -96,6 +96,10 @@ body, html {
 
 #main-menu ul li:hover {
     background-color: #e4e4e4;
+}
+
+#main-menu ul li.x-active:hover {
+    background-color: #ededed;
 }
 
 #main-menu a:hover, #main-menu a:focus {
@@ -204,6 +208,14 @@ body, html {
     text-decoration: none !important;
 }
 
+#news-block .x-news-col a h4 {
+    color: #333333;
+}
+
+#news-block .x-news-col a:hover p {
+    text-decoration: underline;
+}
+
 #news-block .x-button {
     margin: 36px auto 34px;
 }
@@ -271,12 +283,35 @@ div.news-block .news-row .news-row-in .date {
     color: #287c1f;
 }
 
-#assort-block img {
+#assort-block .x-assort-row .x-assort-col .x-frame {
     float: left;
     clear: left;
     border: 1px solid #b7b7b7;
     margin-right: 30px;
     margin-top: 8px;
+
+    width: 130px;
+    height: 130px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+#assort-block .x-assort-row .x-assort-col .x-frame .x-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#assort-block .x-assort-row .x-assort-col .x-frame img {
+    margin: 0;
+    vertical-align: middle;
+    max-width: 125px;
+    max-height: 125px;
+    float: none;
+}
+
+#assort-block img {
+    float: left;
 }
 
 #assort-block h4 {
@@ -289,6 +324,10 @@ div.news-block .news-row .news-row-in .date {
 #assort-block table {
     font-size: 15px;
     width: 210px;
+}
+
+#assort-block table tr td:first-child {
+    color: #888888;
 }
 
 #assort-block table tr td:last-child {
@@ -460,6 +499,10 @@ div.news-block .news-row .news-row-in .date {
     padding: 0;
 }
 
+.x-border {
+    border: 1px solid #b7b7b7 !important;
+}
+
 #assort-block.assort-page .x-assort-page-row .x-assort-page-col .x-frame {
     margin-top: 8px;
 
@@ -468,10 +511,6 @@ div.news-block .news-row .news-row-in .date {
     #border: 1px solid #b7b7b7;
     white-space: nowrap;
     text-align: center;
-}
-
-.x-border {
-    border: 1px solid #b7b7b7 !important;
 }
 
 #assort-block.assort-page .x-assort-page-row .x-assort-page-col .x-frame .x-helper {

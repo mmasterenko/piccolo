@@ -12,6 +12,7 @@
                 <li><a href="{% url 'news' %}">НОВОСТИ</a></li>
                 <li><a href="{% url 'job' %}">ВАКАНСИИ</a></li>
                 <li><a href="javascript:void(0)">КОНТАКТЫ</a></li>
+                <li><a href="javascript:void(0)">ПОСТАВЩИКАМ</a></li>
             </ul>
         </div>
     </nav>
@@ -55,49 +56,23 @@
     </div>
 
     <div class="container-fluid">
+        {% if news %}
         <div id="news-block" class="row">
             <div class="col-sm-12">
                 <h3>НОВОСТИ</h3>
                 <div class="row x-row">
-                    <div class="col-sm-4 x-news-col">
-                        <img src="{% static 'images/dummy-cake.jpg' %}" alt="cake">
-                        <h4>ЗАГОЛОВОК НОВОСТИ</h4>
-                        <p>
-                            Компания “Версилия” – молодое, динамично развивающиеся предприятие,
-                            успевшее зарекомендовать себя на рынке кондитерских изделий России как весьма
-                            перспективный партнер. Наше предприятие выпускает кондитерские изделия из слоеного,
-                            песочного, сдобного и бисквитного теста, а также, пирожные с длительным ...
-                        </p>
+                    {% for new in news %}
+                        <div class="col-sm-4 x-news-col">
+                        <a href="{{ new.url }}">
+                            <img src="{{ new.img }}" alt="cake">
+                            <h4>{{ new.header | upper }}</h4>
+                            <p>{{ new.text }}</p>
+                        </a>
                         <div class="date">
-                            <span>22 Апреля 11:25</span>
+                            <span>{{ new.date }}</span>
                         </div>
                     </div>
-                    <div class="col-sm-4 x-news-col">
-                        <img src="{% static 'images/dummy-cake.jpg' %}" alt="cake">
-                        <h4>ЗАГОЛОВОК НОВОСТИ</h4>
-                        <p>
-                            Компания “Версилия” – молодое, динамично развивающиеся предприятие,
-                            успевшее зарекомендовать себя на рынке кондитерских изделий России как весьма
-                            перспективный партнер. Наше предприятие выпускает кондитерские изделия из слоеного,
-                            песочного, сдобного и бисквитного теста, а также, пирожные с длительным ...
-                        </p>
-                        <div class="date">
-                            <span>22 Апреля 11:25</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 x-news-col">
-                        <img src="{% static 'images/dummy-cake.jpg' %}" alt="cake">
-                        <h4>ЗАГОЛОВОК НОВОСТИ</h4>
-                        <p>
-                            Компания “Версилия” – молодое, динамично развивающиеся предприятие,
-                            успевшее зарекомендовать себя на рынке кондитерских изделий России как весьма
-                            перспективный партнер. Наше предприятие выпускает кондитерские изделия из слоеного,
-                            песочного, сдобного и бисквитного теста, а также, пирожные с длительным ...
-                        </p>
-                        <div class="date">
-                            <span>22 Апреля 11:25</span>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div class="row">
                     <div class="col-sm-4"></div>
@@ -108,131 +83,47 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         <div id="assort-block" class="row">
             <div class="col-sm-12">
                 <h3>АССОРТИМЕНТ</h3>
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <ul class="nav navbar-nav">
-                            <li class="x-active"><a href="javascript:void(0)">ПЕЧЕНЬЕ СДОБНО-СЛОЕНОЕ</a></li>
-                            <li><a href="javascript:void(0)">ПЕЧЕНЬЕ ПЕСОЧНОЕ</a></li>
-                            <li><a href="javascript:void(0)">ПЕЧЕНЬЕ СДОБНОЕ ТВОРОЖНОЕ</a></li>
-                            <li><a href="javascript:void(0)">КРУАССАНЫ</a></li>
+                            {% for category in categories %}
+                                <li><a id="{{ category.id }}" href="javascript:void(0)">{{ category.name }}</a></li>
+                            {% endfor %}
+                            <!--li class="x-active"><a href="javascript:void(0)">ПЕЧЕНЬЕ СДОБНО-СЛОЕНОЕ</a></li-->
                         </ul>
                     </div>
                 </nav>
-                <div class="row x-assort-row">
-                    <div class="col-sm-4 x-assort-col">
-                        <img src="{% static 'images/dummy-cookie.jpg' %}" alt="cookie">
-                        <h4>НАЗВАНИЕ ПЕЧЕНЬЯ</h4>
-                        <table>
-                            <tr>
-                                <td>Вес единицы</td>
-                                <td>1000 г</td>
-                            </tr>
-                            <tr>
-                                <td>Единиц в ящике</td>
-                                <td>3,5</td>
-                            </tr>
-                            <tr>
-                                <td>Срок реализации</td>
-                                <td>45 дней</td>
-                            </tr>
-                        </table>
+                {% for cookie_row in cookies %}
+                    <div class="row x-assort-row">
+                        {% for cookie in cookie_row %}
+                            <div class="col-sm-4 x-assort-col">
+                                <div class="x-frame">
+                                    <span class="x-helper"></span>
+                                    <img src="{{ cookie.img }}" alt="cookie">
+                                </div>
+                                <h4>{{ cookie.name | upper }}</h4>
+                                <table>
+                                    <tr>
+                                        <td>Вес единицы</td>
+                                        <td>{{ cookie.pcsWeight }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Единиц в ящике</td>
+                                        <td>{{ cookie.pcsPerBox }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Срок реализации</td>
+                                        <td>{{ cookie.shelfLife }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        {% endfor %}
                     </div>
-                    <div class="col-sm-4 x-assort-col">
-                        <img src="{% static 'images/dummy-cookie.jpg' %}" alt="cookie">
-                        <h4>НАЗВАНИЕ ПЕЧЕНЬЯ</h4>
-                        <table>
-                            <tr>
-                                <td>Вес единицы</td>
-                                <td>1000 г</td>
-                            </tr>
-                            <tr>
-                                <td>Единиц в ящике</td>
-                                <td>3,5</td>
-                            </tr>
-                            <tr>
-                                <td>Срок реализации</td>
-                                <td>45 дней</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col-sm-4 x-assort-col">
-                        <img src="{% static 'images/dummy-cookie.jpg' %}" alt="cookie">
-                        <h4>НАЗВАНИЕ ПЕЧЕНЬЯ</h4>
-                        <table>
-                            <tr>
-                                <td>Вес единицы</td>
-                                <td>1000 г</td>
-                            </tr>
-                            <tr>
-                                <td>Единиц в ящике</td>
-                                <td>3,5</td>
-                            </tr>
-                            <tr>
-                                <td>Срок реализации</td>
-                                <td>45 дней</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="row x-assort-row">
-                    <div class="col-sm-4 x-assort-col">
-                        <img src="{% static 'images/dummy-cookie.jpg' %}" alt="cookie">
-                        <h4>НАЗВАНИЕ ПЕЧЕНЬЯ</h4>
-                        <table>
-                            <tr>
-                                <td>Вес единицы</td>
-                                <td>1000 г</td>
-                            </tr>
-                            <tr>
-                                <td>Единиц в ящике</td>
-                                <td>3,5</td>
-                            </tr>
-                            <tr>
-                                <td>Срок реализации</td>
-                                <td>45 дней</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col-sm-4 x-assort-col">
-                        <img src="{% static 'images/dummy-cookie.jpg' %}" alt="cookie">
-                        <h4>НАЗВАНИЕ ПЕЧЕНЬЯ</h4>
-                        <table>
-                            <tr>
-                                <td>Вес единицы</td>
-                                <td>1000 г</td>
-                            </tr>
-                            <tr>
-                                <td>Единиц в ящике</td>
-                                <td>3,5</td>
-                            </tr>
-                            <tr>
-                                <td>Срок реализации</td>
-                                <td>45 дней</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col-sm-4 x-assort-col">
-                        <img src="{% static 'images/dummy-cookie.jpg' %}" alt="cookie">
-                        <h4>НАЗВАНИЕ ПЕЧЕНЬЯ</h4>
-                        <table>
-                            <tr>
-                                <td>Вес единицы</td>
-                                <td>1000 г</td>
-                            </tr>
-                            <tr>
-                                <td>Единиц в ящике</td>
-                                <td>3,5</td>
-                            </tr>
-                            <tr>
-                                <td>Срок реализации</td>
-                                <td>45 дней</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                {% endfor %}
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4 x-assort-col">

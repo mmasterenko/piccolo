@@ -1,10 +1,74 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render
-
+from django.core.urlresolvers import reverse
 
 def main(req):
-    return render(req, 'vapp/main.html')
+    cookies = [
+            [
+                {'img': '/static/pics/mid/pesoch-1.jpg',
+                 'name': u'Венето',
+                 'pcsWeight': u'1000г',
+                 'pcsPerBox': '2,3',
+                 'shelfLife': u'90 дней'
+                 },
+                {'img': '/static/pics/mid/pesoch-2.jpg',
+                 'name': u'Виареджио',
+                 'pcsWeight': u'1000г',
+                 'pcsPerBox': '2,5',
+                 'shelfLife': u'90 дней'
+                 },
+                {'img': '/static/pics/mid/pesoch-3.jpg',
+                 'name': u'Фатимо',
+                 'pcsWeight': u'1000г',
+                 'pcsPerBox': '2,5',
+                 'shelfLife': u'90 дней'
+                 }
+            ],
+            [
+                {'img': '/static/pics/mid/pesoch-4.jpg',
+                 'name': u'Рольяно',
+                 'pcsWeight': u'1000г',
+                 'pcsPerBox': '2,3',
+                 'shelfLife': u'90 дней'
+                 },
+                {'img': '/static/pics/mid/pesoch-5.jpg',
+                 'name': u'Феличе',
+                 'pcsWeight': u'1000г',
+                 'pcsPerBox': '2,5',
+                 'shelfLife': u'90 дней'
+                 },
+                {'img': '/static/pics/mid/pesoch-6.jpg',
+                 'name': u'Полоска',
+                 'pcsWeight': u'1000г',
+                 'pcsPerBox': '2,5',
+                 'shelfLife': u'90 дней'
+                 }
+            ]
+        ]
+    context = {
+        'news': [
+            {
+                'img': '/static/images/dummy-cake.jpg',
+                'header': u'ЗАГОЛОВОК НОВОСТИ',
+                'text': u'''
+                                Компания “Версилия” – молодое, динамично развивающиеся предприятие,
+                                успевшее зарекомендовать себя на рынке кондитерских изделий России как весьма
+                                перспективный партнер. Наше предприятие выпускает кондитерские изделия из слоеного,
+                                песочного, сдобного и бисквитного теста, а также, пирожные с длительным ...
+                            ''',
+                'date': u'22 Апреля 11:25',
+                'url': reverse(news)
+            }
+        ]*3,
+        'cookies': cookies,
+        'categories': [
+            {'id': 1, 'name': u'ПЕЧЕНЬЕ СДОБНО-СЛОЕНОЕ'},
+            {'id': 2, 'name': u'ПЕЧЕНЬЕ ПЕСОЧНОЕ'},
+            {'id': 3, 'name': u'ПЕЧЕНЬЕ СДОБНОЕ ТВОРОЖНОЕ'}
+        ]
+    }
+    return render(req, 'vapp/main.html', context=context)
 
 
 def news(req):
