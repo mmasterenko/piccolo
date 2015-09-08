@@ -102,17 +102,6 @@ body, html {
     text-decoration: none;
 }
 
-/*
-ul.horiz-menu {
-    list-style-type: none;
-}
-
-ul.horiz-menu li {
-    display: block;
-    float: left;
-}
-*/
-
 /* * * * * * *
  * carousel  *
  * * * * * * */
@@ -467,6 +456,22 @@ div.news-block .news-row .news-row-in .date {
     padding: 0;
 }
 
+#assort-block.assort-page .x-assort-page-row .x-assort-page-col .x-frame {
+    margin-top: 8px;
+
+    width: 370px;
+    height: 210px;
+    border: 1px solid #b7b7b7;
+    white-space: nowrap;
+    text-align: center;
+}
+
+#assort-block.assort-page .x-assort-page-row .x-assort-page-col .x-frame .x-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
 #assort-block.assort-page .x-assort-page-row table {
     font-weight: 300;
     font-size: 22px;
@@ -486,10 +491,11 @@ div.news-block .news-row .news-row-in .date {
 #assort-block.assort-page .x-assort-page-row img.cake-img {
     float: none;
     clear: none;
-    margin-right: 0;
-    #width: 369px;
-    #height: 210px;
-    min-height: 210px;  /* todo: fix it */
+    margin: 0;
+
+    vertical-align: middle;
+    max-width: 360px;
+    max-height: 205px;   /* resize all images to 360x205  */
 }
 
 #assort-block.assort-page .x-assort-page-row img.icon-img {
