@@ -12,8 +12,8 @@ def news(req):
 
 
 def assortiment(req, page_id=1):
-    context = {
-        'cookies': [
+    if page_id == '1':
+        cookies = [
             [
                 {'img': '/static/pics/big/sorrento-big.jpg',
                  'name': u'Сорренто',
@@ -28,7 +28,11 @@ def assortiment(req, page_id=1):
                  'shelfLife': u'90 дней'
                  }
             ],
-        ],
+        ]
+    if page_id in ('2', '3', '4'):
+        cookies = []
+    context = {
+        'cookies': cookies,
         'categories': [
             {'id': 1, 'name': u'ПЕЧЕНЬЕ СДОБНО-СЛОЕНОЕ'},
             {'id': 2, 'name': u'ПЕЧЕНЬЕ ПЕСОЧНОЕ'},
