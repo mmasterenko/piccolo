@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^assortiment/$', views.assortiment, name='assortiment'),
     url(r'^assortiment/([0-9]+)/$', views.assortiment, name='assortiment'),
     url(r'^about/$', views.about, name='about'),
-    url(r'^job/$', views.job, name='job')
+    url(r'^job/$', views.job, name='job'),
+    url(r'^media/(?P<path>images/.+(?:\.jpeg|\.jpg|\.png))$', views.media, name='media')
 ]

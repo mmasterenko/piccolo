@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 
+import os
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
+from django.http import FileResponse, HttpResponse
+from django.conf import settings
+
 
 def main(req):
     cookies = [
@@ -188,3 +192,16 @@ def about(req):
 def job(req):
     return render(req, 'vapp/job.html')
 
+
+def media(req, path):
+    file_name = os.path.join(settings.MEDIA_ROOT, path)
+    _, file_ext = os.path.splitext(file_name)
+
+    content_type = 'image/jpeg'  # default value
+    if file_ext.lower() in ('.jpg', '.jpeg'):
+        content_type = 'image/jpeg'
+    if file_ext.lower() in ('.png',):
+        content_type = 'image/png'
+
+    image_data = open(file_name, 'rb').read()
+    return HttpResponse(image_data, content_type=content_type)
