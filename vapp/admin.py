@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib import admin
-from models import Category, Assortiment
+from models import Category, Assortiment, News
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -13,3 +15,4 @@ class AssortimentAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Assortiment, AssortimentAdmin)
+admin.site.register(News)

@@ -22,6 +22,7 @@ urlpatterns = [
 
     url(r'^$', views.main, name='main'),
     url(r'^news/$', views.news, name='news'),
+    url(r'^news/(?P<news_url>.+)/$', views.news, name='news'),
     url(r'^assortiment/$', views.assortiment, name='assortiment'),
     url(r'^assortiment/([0-9]+)/$', views.assortiment, name='assortiment'),
     url(r'^about/$', views.about, name='about'),

@@ -13,6 +13,13 @@ from PIL import Image
 
 class MyImgStorage(FileSystemStorage):
     def __init__(self, *args, **kwargs):
+        self.width = self.height = self.img_path = None
+        try:
+            self.width = kwargs.pop('width')
+            self.height = kwargs.pop('height')
+            self.img_path = kwargs.pop('img_path')
+        except KeyError:
+            pass
         super(MyImgStorage, self).__init__(*args, **kwargs)
 
     def get_available_name(self, name, max_length=None):
@@ -109,20 +116,21 @@ class MyImgStorage(FileSystemStorage):
                 break
 
         # this is my code for resize image
-        middle_size = 360, 205
+        size = self.width, self.height
         _, file_name = os.path.split(full_path)
-        middle_size_path = os.path.join(settings.MEDIA_ROOT, 'images/middle', file_name)
+        size_path = os.path.join(settings.MEDIA_ROOT, self.img_path, file_name)
 
         im = Image.open(full_path)
-        im.thumbnail(middle_size)
-        im.save(middle_size_path)
+        im.thumbnail(size)
+        im.save(size_path)
 
         if self.file_permissions_mode is not None:
             os.chmod(full_path, self.file_permissions_mode)
 
         return name
 
-fs = MyImgStorage()
+assort_fs = MyImgStorage(width=360, height=205, img_path='images/middle')
+news_fs = MyImgStorage(width=360, height=205, img_path='images/news')
 
 
 class Category(models.Model):
@@ -155,4 +163,19 @@ class Assortiment(models.Model):
     img_width = models.PositiveSmallIntegerField(null=True, blank=True)
     img_height = models.PositiveSmallIntegerField(null=True, blank=True)
     img = models.ImageField(u'Картинка', upload_to='images/original', default='',
-                            width_field='img_width', height_field='img_height', storage=fs)
+                            width_field='img_width', height_field='img_height', storage=assort_fs)
+
+
+class News(models.Model):
+    def __unicode__(self):
+        return '%s' % self.header
+
+    header = models.CharField(u'Заголовок', max_length=80)
+    text = models.TextField(u'Текст')
+    date = models.DateField(u'Дата')
+    url = models.URLField(u'URL')
+
+    img_width = models.PositiveSmallIntegerField(null=True, blank=True)
+    img_height = models.PositiveSmallIntegerField(null=True, blank=True)
+    img = models.ImageField(u'Картинка', upload_to='images/news', default='',
+                            width_field='img_width', height_field='img_height', storage=news_fs)
