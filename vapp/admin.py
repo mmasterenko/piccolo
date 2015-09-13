@@ -4,6 +4,7 @@ from models import Category, Assortiment
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'order')
+    ordering = ['order', 'id']
 
 
 class AssortimentAdmin(admin.ModelAdmin):

@@ -128,10 +128,9 @@ fs = MyImgStorage()
 class Category(models.Model):
     def __unicode__(self):
         return '%s' % self.name
-    help_text = u'Позволяет менять порядок следования в меню. По умолчанию 0 ' \
-                u'(в этом случае используется стандартный порядок)'
+    help_text = u'Позволяет менять порядок следования в меню'
     name = models.CharField(u'Название', max_length=100)
-    order = models.PositiveSmallIntegerField(u'Порядок', default=0, help_text=help_text)
+    order = models.PositiveSmallIntegerField(u'Порядок', help_text=help_text, null=True, blank=True)
 
 
 class Assortiment(models.Model):

@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import FileResponse, HttpResponse
 from django.conf import settings
+from vapp.models import Category, Assortiment
 
 
 def main(req):
@@ -80,106 +81,29 @@ def news(req):
 
 
 def assortiment(req, page_id='1'):
-    if page_id == '1':
-        cookies = [
-            [
-                {'img': '/static/pics/big/sorrento.jpg',
-                 'name': u'Сорренто',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,3',
-                 'shelfLife': u'90 дней'
-                 },
-                {'img': '/static/pics/big/chertaldo.jpg',
-                 'name': u'Чертальдо',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,5',
-                 'shelfLife': u'90 дней'
-                 }
-            ],
-        ]
-    if page_id == '3':
-        cookies = [
-            [
-                {'img': '/static/pics/big/tvoroj.jpg',
-                 'name': u'Творожное классическое',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,3',
-                 'shelfLife': u'90 дней'
-                 },
-                {'img': '/static/pics/big/tvoroj-cuk.jpg',
-                 'name': u'Творожное с цукатами',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,5',
-                 'shelfLife': u'90 дней'
-                 },
-                {'img': '/static/pics/big/tvoroj-cherry.jpg',
-                 'name': u'Творожное с вишней',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,5',
-                 'shelfLife': u'90 дней'
-                 }
-            ]
-        ]
-    if page_id == '2':
-        cookies = [
-            [
-                {'img': '/static/pics/big/pesoch-1.jpg',
-                 'name': u'Венето',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,3',
-                 'shelfLife': u'90 дней'
-                 },
-                {'img': '/static/pics/big/pesoch-2.jpg',
-                 'name': u'Виареджио',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,5',
-                 'shelfLife': u'90 дней'
-                 },
-                {'img': '/static/pics/big/pesoch-3.jpg',
-                 'name': u'Фатимо',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,5',
-                 'shelfLife': u'90 дней'
-                 }
-            ],
-            [
-                {'img': '/static/pics/big/pesoch-4.jpg',
-                 'name': u'Рольяно',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,3',
-                 'shelfLife': u'90 дней'
-                 },
-                {'img': '/static/pics/big/pesoch-5.jpg',
-                 'name': u'Феличе',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,5',
-                 'shelfLife': u'90 дней'
-                 },
-                {'img': '/static/pics/big/pesoch-6.jpg',
-                 'name': u'Полоска',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,5',
-                 'shelfLife': u'90 дней'
-                 }
-            ],
-            [
-                {'img': '/static/pics/big/pesoch-7.jpg',
-                 'name': u'Курабье',
-                 'pcsWeight': u'1000г',
-                 'pcsPerBox': '2,5',
-                 'shelfLife': u'90 дней'
-                 }
-            ]
-        ]
-    if page_id in ('4',):
-        cookies = []
+    cookie_list = Assortiment.objects.filter(category_id=page_id)
+    row_length = 3
+    cookies, row = [], []
+    for cookie in cookie_list:
+        d = {
+            'img': cookie.img.url,
+            'name': cookie.name,
+            'pcs_weight': cookie.weight,
+            'weight_units': cookie.weight_units,
+            'pcs_per_box': cookie.pcs,
+            'shelf_life': cookie.days
+        }
+        row.append(d)
+        if len(row) >= row_length:
+            cookies.append(row)
+            row = []
+    cookies.append(row)
+
+    category_list = Category.objects.order_by('order', 'id')
+    categories = [dict(id=c.id, name=c.name) for c in category_list]
     context = {
         'cookies': cookies,
-        'categories': [
-            {'id': 1, 'name': u'ПЕЧЕНЬЕ СДОБНО-СЛОЕНОЕ'},
-            {'id': 2, 'name': u'ПЕЧЕНЬЕ ПЕСОЧНОЕ'},
-            {'id': 3, 'name': u'ПЕЧЕНЬЕ СДОБНОЕ ТВОРОЖНОЕ'}
-        ],
+        'categories': categories,
         'page_id': int(page_id)
     }
     return render(req, 'vapp/assortiment.html', context=context)
