@@ -8,6 +8,7 @@ from django.core.files.move import file_move_safe
 from django.db import models
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+from django.utils.timezone import now
 from PIL import Image
 
 
@@ -148,7 +149,7 @@ class Assortiment(models.Model):
     WEIGHT_UNITS = ((u'г', u'г'), (u'кг', u'кг'))
 
     category = models.ForeignKey(Category, verbose_name=u'Категория')
-    name = models.CharField(u'Название', max_length=200)
+    name = models.CharField(u'Наименование', max_length=200)
 
     weight = models.DecimalField(u'Вес единицы', max_digits=3, decimal_places=1, default=2.5)
     weight_units = models.CharField(u'Ед изм', max_length=3, choices=WEIGHT_UNITS, default=u'кг')
@@ -172,10 +173,14 @@ class News(models.Model):
 
     header = models.CharField(u'Заголовок', max_length=80)
     text = models.TextField(u'Текст')
-    date = models.DateField(u'Дата')
-    url = models.URLField(u'URL')
+    date = models.DateField(u'Дата', default=now())
+    url = models.SlugField(u'URL', null=True, blank=True, unique=True, max_length=90)
 
     img_width = models.PositiveSmallIntegerField(null=True, blank=True)
     img_height = models.PositiveSmallIntegerField(null=True, blank=True)
-    img = models.ImageField(u'Картинка', upload_to='images/news', default='',
+    img = models.ImageField(u'Картинка', upload_to='images/news', default='', null=True, blank=True,
                             width_field='img_width', height_field='img_height', storage=news_fs)
+    # for SEO
+    meta_keywords = models.CharField('<meta> keywords content', max_length=100, null=True, blank=True)
+    meta_desc = models.CharField('<meta> description content', max_length=100, null=True, blank=True)
+    title = models.CharField('<title>', max_length=100, null=True, blank=True)
