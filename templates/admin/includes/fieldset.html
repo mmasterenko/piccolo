@@ -12,12 +12,20 @@
                     {% if field.is_checkbox %}
                         {{ field.field }}{{ field.label_tag }}
                     {% else %}
+                    <table style="border: none;">
+                        <tr>
+                        <td style="border: none;">
                         {{ field.label_tag }}
+                        </td>
+                        <td style="border: none;">
                         {% if field.is_readonly %}
                             <p>{{ field.contents }}</p>
                         {% else %}
                             {{ field.field }}
                         {% endif %}
+                        </td>
+                        </tr>
+                    </table>
                     {% endif %}
                     {% if field.field.help_text %}
                         <p class="help">{{ field.field.help_text|safe }}</p>
