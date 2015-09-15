@@ -3,7 +3,7 @@
 
 {% block extrahead %}{{ block.super }}
 <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
-<script src="//cdn.ckeditor.com/4.5.3/standard/ckeditor.js"></script>
+<script src="{% static 'lib/ckeditor/ckeditor.js' %}"></script>
 {{ media }}
 {% endblock %}
 
