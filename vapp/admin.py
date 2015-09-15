@@ -19,7 +19,10 @@ class AssortimentAdmin(admin.ModelAdmin):
             'fields': ('category', 'name', 'weight', 'weight_units', 'days', 'img'),
             'classes': ('wide',)
         }),
-        (u'Необязательные поля', {'fields': ('pcs', 'is_hit', 'is_new', 'is_comingSoon')})
+        (u'Необязательные поля', {
+            'fields': ('pcs', 'is_hit', 'is_new', 'is_comingSoon'),
+            'classes': ('wide',)
+        })
     ]
     list_display = ('name', 'category', 'weight', 'weight_units', 'days', 'is_hit', 'is_new', 'is_comingSoon', 'img')
 

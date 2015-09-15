@@ -3,6 +3,7 @@
 
 {% block extrahead %}{{ block.super }}
 <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+<script src="//cdn.ckeditor.com/4.5.3/standard/ckeditor.js"></script>
 {{ media }}
 {% endblock %}
 
@@ -89,6 +90,8 @@
 
 {# JavaScript for prepopulated fields #}
 {% prepopulated_fields_js %}
+
+<script type="text/javascript">CKEDITOR.replace('id_text', {language:'ru'})</script>
 
 </div>
 </form></div>
