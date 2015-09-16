@@ -29,18 +29,24 @@
                         <h4>{{ cookie.name | upper }}</h4>
                         <img class="icon-img" src="{% static 'images/assort-icon-1.png' %}" alt="icon">
                         <table>
+                            {% if cookie.pcs_weight %}
                             <tr>
                                 <td>Вес единицы</td>
                                 <td>{{ cookie.pcs_weight }} {{ cookie.weight_units }}</td>
                             </tr>
+                            {% endif %}
+                            {% if cookie.pcs_per_box %}
                             <tr>
                                 <td>Единиц в ящике</td>
                                 <td>{{ cookie.pcs_per_box }}</td>
                             </tr>
+                            {% endif %}
+                            {% if cookie.shelf_life %}
                             <tr>
                                 <td>Срок реализации</td>
                                 <td>{{ cookie.shelf_life }} дней</td>
                             </tr>
+                            {% endif %}
                         </table>
                     </div>
                 {% endfor %}

@@ -119,15 +119,15 @@
                                 </div>
                                 <h4 ng-bind="cookie.name"></h4>
                                 <table>
-                                    <tr>
+                                    <tr ng-if="cookie.pcs_weight">
                                         <td>Вес единицы</td>
                                         <td ng-bind="cookie.pcs_weight + ' ' + cookie.weight_units"></td>
                                     </tr>
-                                    <tr>
+                                    <tr ng-if="cookie.pcs_per_box">
                                         <td>Единиц в ящике</td>
                                         <td ng-bind="cookie.pcs_per_box"></td>
                                     </tr>
-                                    <tr>
+                                    <tr ng-if="cookie.shelf_life">
                                         <td>Срок реализации</td>
                                         <td ng-bind="cookie.shelf_life + ' дней'"></td>
                                     </tr>

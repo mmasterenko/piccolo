@@ -3,14 +3,14 @@ from vapp.models import Category
 
 def assortiment_queryset_to_structure(assortiment_queryset):
     cookies, row, row_length = [], [], 3
-    for cookie in assortiment_queryset:
+    for assort in assortiment_queryset:
         d = {
-            'img': cookie.img.url,
-            'name': cookie.name.upper(),
-            'pcs_weight': str(cookie.weight),
-            'weight_units': cookie.weight_units,
-            'pcs_per_box': str(cookie.pcs) if cookie.pcs else '--',
-            'shelf_life': str(cookie.days)
+            'img': assort.img.url,
+            'name': assort.name.upper(),
+            'pcs_weight': str(assort.weight),
+            'weight_units': assort.weight_units,
+            'pcs_per_box': str(assort.pcs) if assort.pcs else '',
+            'shelf_life': str(assort.days)
         }
         row.append(d)
         if len(row) >= row_length:
