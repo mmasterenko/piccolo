@@ -19,6 +19,7 @@
 
 {% block content %}
     <div class="container-fluid news-block">
+        {% if news %}
         <div class="row news-row">
             <div class="col-sm-12 news-row-in">
                 <h3 class="header-news-page">{{ news.header | upper }}</h3>
@@ -58,5 +59,6 @@
                 </nav>
             </div>
         </div-->
+        {% endif %}
     </div>
 {% endblock %}

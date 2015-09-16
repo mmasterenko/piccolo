@@ -8,16 +8,19 @@
     <nav id="main-menu" class="navbar navbar-default assortiment-menu">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
+                {% if categories %}
                 {% for category in categories %}
                     <li {% if page_id == category.id %} class="x-active" {% endif %}>
                         <a href="{% url 'assortiment' category.id %}">{{ category.name }}</a>
                     </li>
                 {% endfor %}
+                {% endif %}
             </ul>
         </div>
     </nav>
 
     <div id="assort-block" class="container-fluid assort-page">
+        {% if cookies %}
         {% for cookie_row in cookies %}
             <div class="row x-assort-page-row">
                 {% for cookie in cookie_row %}
@@ -65,6 +68,7 @@
                 {% endfor %}
             </div>
         {% endfor %}
+        {% endif %}
     </div>
 
 {% endblock %}
