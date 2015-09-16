@@ -131,6 +131,14 @@
                                         <td>Срок реализации</td>
                                         <td ng-bind="cookie.shelf_life + ' дней'"></td>
                                     </tr>
+                                    <tr ng-if="cookie.is_someFlag">
+                                        <td>
+                                            <span ng-if="cookie.is_hit" style="margin-right: 2px" class="label label-danger">хит</span>
+                                            <span ng-if="cookie.is_new" style="margin-right: 2px" class="label label-success">нов</span>
+                                            <span ng-if="cookie.is_comingSoon" style="margin-right: 2px" class="label label-warning">скоро</span>
+                                        </td>
+                                        <td></td>
+                                    </tr>
                                 </table>
                             </div>
 
