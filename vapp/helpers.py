@@ -1,7 +1,12 @@
-from vapp.models import Category
+from vapp.models import Category, Assortiment
 
 
-def assortiment_queryset_to_structure(assortiment_queryset):
+def get_assortiment_list(category_id, limit=None):
+    if limit:
+        assortiment_queryset = Assortiment.objects.filter(category_id=category_id).order_by('-id')[:limit]
+    else:
+        assortiment_queryset = Assortiment.objects.filter(category_id=category_id).order_by('-id')
+
     cookies, row, row_length = [], [], 3
     for assort in assortiment_queryset:
         d = {

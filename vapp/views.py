@@ -6,8 +6,8 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.conf import settings
-from vapp.models import Assortiment, News
-from vapp.helpers import assortiment_queryset_to_structure, get_categories_list
+from vapp.models import News
+from vapp.helpers import get_assortiment_list, get_categories_list
 
 
 def main(req):
@@ -56,8 +56,7 @@ def assortiment(req, page_id=None):
     categories = get_categories_list()
     if not page_id:
         page_id = categories[0].get('id')
-    assortiment_queryset = Assortiment.objects.filter(category_id=page_id)
-    cookies = assortiment_queryset_to_structure(assortiment_queryset)
+    cookies = get_assortiment_list(page_id)
     context = {
         'cookies': cookies,
         'categories': categories,
@@ -92,7 +91,6 @@ def api(req, cat_id=''):
     if not cat_id:
         return HttpResponse('no data')
 
-    assortiment_queryset = Assortiment.objects.filter(category_id=cat_id)[:6]
-    cookies = assortiment_queryset_to_structure(assortiment_queryset)
+    cookies = get_assortiment_list(cat_id, limit=6)
     response = json.dumps(cookies)
     return HttpResponse(response)
