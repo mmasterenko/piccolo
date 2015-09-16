@@ -23,4 +23,4 @@ def assortiment_queryset_to_structure(assortiment_queryset):
 
 def get_categories_list():
     category_queryset = Category.objects.order_by('order', 'id')
-    return [dict(id=c.id, name=c.name) for c in category_queryset]
+    return [dict(id=c.id, name=c.name.upper()) for c in category_queryset]
