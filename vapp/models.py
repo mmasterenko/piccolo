@@ -178,8 +178,9 @@ class News(models.Model):
 
     img_width = models.PositiveSmallIntegerField(null=True, blank=True)
     img_height = models.PositiveSmallIntegerField(null=True, blank=True)
+    help_text = u'Картинка, которая отображается на главной странице'
     img = models.ImageField(u'Картинка', upload_to='images/news', default='', null=True, blank=True,
-                            width_field='img_width', height_field='img_height', storage=news_fs)
+                            width_field='img_width', height_field='img_height', help_text=help_text, storage=news_fs)
     # for SEO
     meta_keywords = models.CharField('<meta> keywords content', max_length=100, null=True, blank=True)
     meta_desc = models.CharField('<meta> description content', max_length=100, null=True, blank=True)
