@@ -6,31 +6,12 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.conf import settings
-from vapp.models import Category, Assortiment, News
+from vapp.models import Assortiment, News
+from vapp.helpers import assortiment_queryset_to_structure, get_categories_list
 
 
 def main(req):
-    page_id = '3'
-    assortiment_queryset = Assortiment.objects.filter(category_id=page_id)
-    cookies, row, row_length = [], [], 3
-    for cookie in assortiment_queryset:
-        d = {
-            'img': cookie.img.url,
-            'name': cookie.name,
-            'pcs_weight': cookie.weight,
-            'weight_units': cookie.weight_units,
-            'pcs_per_box': cookie.pcs,
-            'shelf_life': cookie.days
-        }
-        row.append(d)
-        if len(row) >= row_length:
-            cookies.append(row)
-            row = []
-    cookies.append(row)
-
-    category_queryset = Category.objects.order_by('order', 'id')
-    categories = [dict(id=c.id, name=c.name) for c in category_queryset]
-
+    categories = get_categories_list()
     news_queryset = News.objects.order_by('-date', 'id')[:3]
     news_list = [{
                      'img': n.img,
@@ -41,9 +22,7 @@ def main(req):
                  } for n in news_queryset]
 
     context = {
-        'cookies': cookies,
         'categories': categories,
-        'page_id': int(page_id),
         'news': news_list
     }
     return render(req, 'vapp/main.html', context=context)
@@ -70,27 +49,12 @@ def news(req, news_url=''):
     return render(req, 'vapp/news.html', context=context)
 
 
-def assortiment(req, page_id='1'):
+def assortiment(req, page_id=None):
+    categories = get_categories_list()
+    if not page_id:
+        page_id = categories[0].get('id')
     assortiment_queryset = Assortiment.objects.filter(category_id=page_id)
-    cookies, row, row_length = [], [], 3
-    for cookie in assortiment_queryset:
-        d = {
-            'img': cookie.img.url,
-            'name': cookie.name,
-            'pcs_weight': cookie.weight,
-            'weight_units': cookie.weight_units,
-            'pcs_per_box': cookie.pcs,
-            'shelf_life': cookie.days
-        }
-        row.append(d)
-        if len(row) >= row_length:
-            cookies.append(row)
-            row = []
-    cookies.append(row)
-
-    category_queryset = Category.objects.order_by('order', 'id')
-    categories = [dict(id=c.id, name=c.name) for c in category_queryset]
-
+    cookies = assortiment_queryset_to_structure(assortiment_queryset)
     context = {
         'cookies': cookies,
         'categories': categories,
@@ -126,21 +90,6 @@ def api(req, cat_id=''):
         return HttpResponse('no data')
 
     assortiment_queryset = Assortiment.objects.filter(category_id=cat_id)[:6]
-    cookies, row, row_length = [], [], 3
-    for cookie in assortiment_queryset:
-        d = {
-            'img': cookie.img.url,
-            'name': cookie.name.upper(),
-            'pcs_weight': str(cookie.weight),
-            'weight_units': cookie.weight_units,
-            'pcs_per_box': str(cookie.pcs) if cookie.pcs else '--',
-            'shelf_life': str(cookie.days)
-        }
-        row.append(d)
-        if len(row) >= row_length:
-            cookies.append(row)
-            row = []
-    if row:
-        cookies.append(row)
+    cookies = assortiment_queryset_to_structure(assortiment_queryset)
     response = json.dumps(cookies)
     return HttpResponse(response)

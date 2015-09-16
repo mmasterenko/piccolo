@@ -10,7 +10,7 @@
             <ul class="nav navbar-nav">
                 {% for category in categories %}
                     <li {% if page_id == category.id %} class="x-active" {% endif %}>
-                        <a href="{% url 'assortiment' category.id %}">{{ category.name | upper }}</a>
+                        <a href="{% url 'assortiment' category.id %}">{{ category.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -35,7 +35,7 @@
                             </tr>
                             <tr>
                                 <td>Единиц в ящике</td>
-                                <td>{{ cookie.pcs_per_box | default_if_none:'--' }}</td>
+                                <td>{{ cookie.pcs_per_box }}</td>
                             </tr>
                             <tr>
                                 <td>Срок реализации</td>
