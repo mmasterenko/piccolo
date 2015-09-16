@@ -159,9 +159,9 @@ class Assortiment(models.Model):
     pcs = models.DecimalField(u'Единиц в ящике', max_digits=3, decimal_places=1, null=True, blank=True)
     days = models.PositiveSmallIntegerField(u'Дней', default=45)
 
-    is_hit = models.BooleanField(u'Хит')
-    is_new = models.BooleanField(u'Новинка')
-    is_comingSoon = models.BooleanField(u'Скоро в продаже')
+    is_hit = models.BooleanField(u'Хит', default=False)
+    is_new = models.BooleanField(u'Новинка', default=False)
+    is_comingSoon = models.BooleanField(u'Скоро в продаже', default=False)
 
     img_width = models.PositiveSmallIntegerField(null=True, blank=True)
     img_height = models.PositiveSmallIntegerField(null=True, blank=True)
