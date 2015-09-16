@@ -105,3 +105,29 @@ def media(req, path):
 
     image_data = open(file_name, 'rb').read()
     return HttpResponse(image_data, content_type=content_type)
+
+
+def api(req, cat_id=''):
+    if not cat_id:
+        return HttpResponse('no data')
+
+    assortiment_queryset = Assortiment.objects.filter(category_id=cat_id)[:6]
+    cookies, row, row_length = [], [], 3
+    for cookie in assortiment_queryset:
+        d = {
+            'img': cookie.img.url,
+            'name': cookie.name.upper(),
+            'pcs_weight': str(cookie.weight),
+            'weight_units': cookie.weight_units,
+            'pcs_per_box': str(cookie.pcs) if cookie.pcs else '--',
+            'shelf_life': str(cookie.days)
+        }
+        row.append(d)
+        if len(row) >= row_length:
+            cookies.append(row)
+            row = []
+    if row:
+        cookies.append(row)
+    import json
+    response = json.dumps(cookies)
+    return HttpResponse(response)

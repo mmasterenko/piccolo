@@ -96,39 +96,40 @@
                     <div class="container-fluid">
                         <ul class="nav navbar-nav">
                             {% for category in categories %}
-                                <li><a id="{{ category.id }}" href="javascript:void(0)">{{ category.name }}</a></li>
+                                <li ng-click="change_category({{ category.id }})"><a id="{{ category.id }}" href="javascript:void(0)">{{ category.name }}</a></li>
                             {% endfor %}
-                            <!--li class="x-active"><a href="javascript:void(0)">ПЕЧЕНЬЕ СДОБНО-СЛОЕНОЕ</a></li-->
                         </ul>
                     </div>
                 </nav>
-                {% for cookie_row in cookies %}
-                    <div class="row x-assort-row">
-                        {% for cookie in cookie_row %}
-                            <div class="col-sm-4 x-assort-col">
+
+                    <div ng-repeat="cookie_row in cookies" class="row x-assort-row">
+
+                            <div ng-repeat="cookie in cookie_row" class="col-sm-4 x-assort-col">
                                 <div class="x-frame">
                                     <span class="x-helper"></span>
-                                    <img src="{{ cookie.img }}" alt="cookie">
+                                    {% verbatim %}
+                                    <img ng-src="{{ cookie.img }}" alt="cookie">
+                                    {% endverbatim %}
                                 </div>
-                                <h4>{{ cookie.name | upper }}</h4>
+                                <h4 ng-bind="cookie.name"></h4>
                                 <table>
                                     <tr>
                                         <td>Вес единицы</td>
-                                        <td>{{ cookie.pcs_weight }} {{ cookie.weight_units }}</td>
+                                        <td ng-bind="cookie.pcs_weight + ' ' + cookie.weight_units"></td>
                                     </tr>
                                     <tr>
                                         <td>Единиц в ящике</td>
-                                        <td>{{ cookie.pcs_per_box | default_if_none:'--' }}</td>
+                                        <td ng-bind="cookie.pcs_per_box"></td>
                                     </tr>
                                     <tr>
                                         <td>Срок реализации</td>
-                                        <td>{{ cookie.shelf_life }} дней</td>
+                                        <td ng-bind="cookie.shelf_life + ' дней'"></td>
                                     </tr>
                                 </table>
                             </div>
-                        {% endfor %}
+
                     </div>
-                {% endfor %}
+
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4 x-assort-col">
