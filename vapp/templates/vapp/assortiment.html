@@ -26,7 +26,20 @@
                             <span class="x-helper"></span>
                             <img class="cake-img" src='{{ cookie.img }}' alt="cookie">
                         </div>
-                        <h4>{{ cookie.name | upper }}</h4>
+                        <h4>{{ cookie.name }}
+                            {% if cookie.is_someFlag %}
+                                <span class="label">&nbsp;</span>
+                            {% endif %}
+                            {% if cookie.is_hit %}
+                                <span class="label label-danger">хит</span>
+                            {% endif %}
+                            {% if cookie.is_new %}
+                                <span class="label label-success">новинка</span>
+                            {% endif %}
+                            {% if cookie.is_comingSoon %}
+                                <span class="label label-warning">скоро в продаже</span>
+                            {% endif %}
+                        </h4>
                         <img class="icon-img" src="{% static 'images/assort-icon-1.png' %}" alt="icon">
                         <table>
                             {% if cookie.pcs_weight %}
