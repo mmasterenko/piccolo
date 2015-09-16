@@ -1,6 +1,20 @@
 {% extends 'vapp/page_base.html' %}
 {% load staticfiles %}
-{% block title %} НОВОСТИ {% endblock %}
+{% block meta %}
+    {% if news.meta_keywords %}
+        <meta name="keywords" content="{{ news.meta_keywords }}" />
+    {% endif %}
+    {% if news.meta_description %}
+        <meta name="description" content="{{ news.meta_description }}" />
+    {% endif %}
+{% endblock %}
+{% block title %}
+    {% if news.title %}
+        {{ news.title }}
+    {% else %}
+        НОВОСТИ
+    {% endif %}
+{% endblock %}
 {% block page_header_text %} НОВОСТИ {% endblock %}
 
 {% block content %}

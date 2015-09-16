@@ -43,7 +43,10 @@ def news(req, news_url=''):
             'header': news_object.header,
             'text': news_object.text,
             'date': news_object.date,
-            'img': news_object.img.url if hasattr(news_object.img, 'url') else ''
+            'img': news_object.img.url if hasattr(news_object.img, 'url') else '',
+            'title': news_object.title,
+            'meta_keywords': news_object.meta_keywords,
+            'meta_description': news_object.meta_desc
         }}
 
     return render(req, 'vapp/news.html', context=context)
