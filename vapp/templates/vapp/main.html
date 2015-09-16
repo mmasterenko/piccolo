@@ -68,9 +68,15 @@
                     {% for new in news %}
                         <div class="col-sm-4 x-news-col">
                         <a href="{{ new.url }}">
+                            {% if new.img %}
                             <img src="{{ new.img }}" alt="cake">
+                            {% endif %}
                             <h4>{{ new.header | upper }}</h4>
-                            <p>{{ new.text }}</p>
+                            <p>
+                                {% autoescape off %}
+                                {{ new.text | truncatechars_html:350 | striptags }}
+                                {% endautoescape %}
+                            </p>
                         </a>
                         <div class="date">
                             <span>{{ new.date }}</span>

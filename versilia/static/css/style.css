@@ -145,6 +145,10 @@ body, html {
     width: 270px;
 }
 
+.news-block h3.header-news-page {
+    width: auto;
+}
+
 #news-block .x-row {
     margin-top: 40px;
     margin-left: 17px;
@@ -226,11 +230,15 @@ div.news-block img.news-img {
     margin-bottom: 15px;
 }
 
-div.news-block p.full-news-text {
+div.news-block div.full-news-text {
     font-size: 20px;
     font-weight: 300;
     color: #888888;
     line-height: 26px;
+}
+
+div.news-block div.full-news-text * {
+    border: none;
 }
 
 div.news-block .news-block-p {

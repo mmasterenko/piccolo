@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import os
+import json
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.conf import settings
-from vapp.models import Category, Assortiment
+from vapp.models import Category, Assortiment, News
 
 
 def main(req):
@@ -30,30 +31,43 @@ def main(req):
     category_queryset = Category.objects.order_by('order', 'id')
     categories = [dict(id=c.id, name=c.name) for c in category_queryset]
 
+    news_queryset = News.objects.order_by('-date', 'id')[:3]
+    news_list = [{
+                     'img': n.img,
+                     'header': n.header,
+                     'text': n.text,
+                     'date': n.date,
+                     'url': reverse(news, args=[n.url]) if n.url else reverse(news, args=[n.id])
+                 } for n in news_queryset]
+
     context = {
         'cookies': cookies,
         'categories': categories,
         'page_id': int(page_id),
-        'news': [
-            {
-                'img': '/static/images/dummy-cake.jpg',
-                'header': u'ЗАГОЛОВОК НОВОСТИ',
-                'text': u'''
-                                Компания “Версилия” – молодое, динамично развивающиеся предприятие,
-                                успевшее зарекомендовать себя на рынке кондитерских изделий России как весьма
-                                перспективный партнер. Наше предприятие выпускает кондитерские изделия из слоеного,
-                                песочного, сдобного и бисквитного теста, а также, пирожные с длительным ...
-                            ''',
-                'date': u'22 Апреля 11:25',
-                'url': reverse(news)
-            }
-        ]*3
+        'news': news_list
     }
     return render(req, 'vapp/main.html', context=context)
 
 
 def news(req, news_url=''):
-    return render(req, 'vapp/news.html')
+    if not news_url:
+        news_object = News.objects.order_by('-date')[0]
+    else:
+        try:
+            selector = int(news_url)
+            news_object = News.objects.filter(id=selector)[0]
+        except ValueError:
+            news_object = News.objects.filter(url=news_url)[0]
+
+    context = {'news':
+        {
+            'header': news_object.header,
+            'text': news_object.text,
+            'date': news_object.date,
+            'img': news_object.img
+        }}
+
+    return render(req, 'vapp/news.html', context=context)
 
 
 def assortiment(req, page_id='1'):
@@ -128,6 +142,5 @@ def api(req, cat_id=''):
             row = []
     if row:
         cookies.append(row)
-    import json
     response = json.dumps(cookies)
     return HttpResponse(response)

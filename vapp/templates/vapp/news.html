@@ -7,35 +7,24 @@
     <div class="container-fluid news-block">
         <div class="row news-row">
             <div class="col-sm-12 news-row-in">
-                <h3>НАЗВАНИЕ НОВОСТИ</h3>
+                <h3 class="header-news-page">{{ news.header | upper }}</h3>
                 <div class="date">
-                    <span>22 Апреля 11:25</span>
+                    <span>{{ news.date }}</span>
                 </div>
                 <div class="news-block-p">
-                    <img class="news-img" src="{% static 'images/news-img.jpg' %}" alt="news image">
-                    <p class="full-news-text">
-                        {% lorem 200 w %}
-                    </p>
+                    {% if news.img %}
+                    <img class="news-img" src="{{ news.img }}" alt="news image">
+                    {% endif %}
+                    <div class="full-news-text">
+                        {% autoescape off %}
+                        {{ news.text }}
+                        {% endautoescape %}
+                    </div>
                 </div>
 
             </div>
         </div>
-        <div class="row news-row">
-            <div class="col-sm-12 news-row-in">
-                <h3>НАЗВАНИЕ НОВОСТИ</h3>
-                <div class="date">
-                    <span>22 Апреля 11:25</span>
-                </div>
-                <div class="news-block-p">
-                    <img class="news-img" src="{% static 'images/news-img.jpg' %}" alt="news image">
-                    <p class="full-news-text">
-                        {% lorem 200 w %}
-                    </p>
-                </div>
-
-            </div>
-        </div>
-        <div class="row x-pagination">
+        <!--div class="row x-pagination">
             <div class="col-sm-12 text-center">
                 <nav>
                     <ul class="pagination pagination-lg">
@@ -54,6 +43,6 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div-->
     </div>
 {% endblock %}
