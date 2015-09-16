@@ -1,6 +1,10 @@
 {% extends 'vapp/base.html' %}
 {% load staticfiles %}
 {% block title %} ГЛАВНАЯ {% endblock %}
+{% block head %}
+<script src="{% static 'lib/angular/angular.min.js' %}"></script>
+<script src="{% static 'js/assortiment_controller.js' %}"></script>
+{% endblock %}
 
 {% block content %}
     <nav id="main-menu" class="navbar navbar-default">
@@ -84,7 +88,8 @@
             </div>
         </div>
         {% endif %}
-        <div id="assort-block" class="row">
+        {% if categories %}
+        <div id="assort-block" class="row" ng-app="vapp" ng-controller="AssortController">
             <div class="col-sm-12">
                 <h3>АССОРТИМЕНТ</h3>
                 <nav class="navbar navbar-default">
@@ -133,5 +138,6 @@
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
 {% endblock %}
