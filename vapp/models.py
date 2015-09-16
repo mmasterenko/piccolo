@@ -128,6 +128,8 @@ class MyImgStorage(FileSystemStorage):
         if self.file_permissions_mode is not None:
             os.chmod(full_path, self.file_permissions_mode)
 
+        name = os.path.join(self.img_path, file_name)
+
         return name
 
 assort_fs = MyImgStorage(width=360, height=205, img_path='images/middle')

@@ -14,7 +14,7 @@ def main(req):
     categories = get_categories_list()
     news_queryset = News.objects.order_by('-date', 'id')[:3]
     news_list = [{
-                     'img': n.img,
+                     'img': n.img.url if hasattr(n.img, 'url') else '',
                      'header': n.header,
                      'text': n.text,
                      'date': n.date,
@@ -43,7 +43,7 @@ def news(req, news_url=''):
             'header': news_object.header,
             'text': news_object.text,
             'date': news_object.date,
-            'img': news_object.img
+            'img': news_object.img.url if hasattr(news_object.img, 'url') else ''
         }}
 
     return render(req, 'vapp/news.html', context=context)
