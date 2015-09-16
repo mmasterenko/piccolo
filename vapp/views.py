@@ -29,31 +29,35 @@ def main(req):
 
 
 def news(req, news_url=''):
+    context = {}  # default context
     if not news_url:
-        news_object = News.objects.order_by('-date')[0]
+        news_object = News.objects.order_by('-date').first()
     else:
         try:
             selector = int(news_url)
-            news_object = News.objects.filter(id=selector)[0]
+            news_object = News.objects.filter(id=selector).first()
         except ValueError:
-            news_object = News.objects.filter(url=news_url)[0]
+            news_object = News.objects.filter(url=news_url).first()
 
-    context = {'news':
-        {
-            'header': news_object.header,
-            'text': news_object.text,
-            'date': news_object.date,
-            'img': news_object.img.url if hasattr(news_object.img, 'url') else '',
-            'title': news_object.title,
-            'meta_keywords': news_object.meta_keywords,
-            'meta_description': news_object.meta_desc
-        }}
+    if news_object:
+        context = {'news':
+            {
+                'header': news_object.header,
+                'text': news_object.text,
+                'date': news_object.date,
+                'img': news_object.img.url if hasattr(news_object.img, 'url') else '',
+                'title': news_object.title,
+                'meta_keywords': news_object.meta_keywords,
+                'meta_description': news_object.meta_desc
+            }}
 
     return render(req, 'vapp/news.html', context=context)
 
 
 def assortiment(req, page_id=None):
     categories = get_categories_list()
+    if not categories:
+        return render(req, 'vapp/assortiment.html')
     if not page_id:
         page_id = categories[0].get('id')
     cookies = get_assortiment_list(page_id)
