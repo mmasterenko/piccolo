@@ -64,6 +64,9 @@
                             </tr>
                             {% endif %}
                         </table>
+                        {% if cookie.desc %}
+                            <div class="assortiment-description">{{ cookie.desc }}</div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>

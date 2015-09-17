@@ -16,6 +16,7 @@ def get_assortiment_list(category_id, limit=None):
             'weight_units': assort.weight_units,
             'pcs_per_box': str(assort.pcs) if assort.pcs else '',
             'shelf_life': str(assort.days),
+            'desc': assort.desc,
             'is_hit': assort.is_hit,
             'is_new': assort.is_new,
             'is_comingSoon': assort.is_comingSoon,

@@ -507,6 +507,14 @@ div.news-block .news-row .news-row-in .date {
     padding: 0;
 }
 
+#assort-block.assort-page .x-assort-page-row .x-assort-page-col .assortiment-description {
+    color: #749471;
+    font-style: italic;
+    font-size: 13px;
+    width: 90%;
+    margin-top: 15px;
+}
+
 .x-border {
     border: 1px solid #b7b7b7 !important;
 }
