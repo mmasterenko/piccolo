@@ -7,7 +7,10 @@ from models import Category, Assortiment, News
 class CategoryAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ('name',)}),
-        (u'Необязательные поля', {'fields': ('order',)})
+        (u'Необязательные поля', {
+            'fields': ('order',),
+            'classes': ('collapse',)
+        })
     ]
     list_display = ('name', 'order')
     ordering = ('order', 'id')

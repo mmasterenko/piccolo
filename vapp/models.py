@@ -141,7 +141,7 @@ class Category(models.Model):
         return '%s' % self.name
     help_text = u'Позволяет менять порядок следования в меню'
     name = models.CharField(u'Название', max_length=100)
-    order = models.PositiveSmallIntegerField(u'Порядок', help_text=help_text, null=True, blank=True)
+    order = models.PositiveSmallIntegerField(u'Порядок', help_text=help_text, null=True, blank=True, default=99)
 
 
 class Assortiment(models.Model):
