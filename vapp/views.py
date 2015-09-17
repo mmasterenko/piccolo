@@ -81,6 +81,10 @@ def contact(req):
     return render(req, 'vapp/contact.html')
 
 
+def distributor(req):
+    return render(req, 'vapp/distributor.html')
+
+
 def media(req, path):
     file_name = os.path.join(settings.MEDIA_ROOT, path)
     _, file_ext = os.path.splitext(file_name)
