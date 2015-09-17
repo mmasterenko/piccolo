@@ -152,8 +152,9 @@ class Assortiment(models.Model):
 
     category = models.ForeignKey(Category, verbose_name=u'Категория')
     name = models.CharField(u'Наименование', max_length=200)
+    desc = models.TextField(u'Описание', max_length=150, null=True, blank=True)
 
-    weight = models.DecimalField(u'Вес единицы', max_digits=3, decimal_places=1, default=2.5)
+    weight = models.DecimalField(u'Вес единицы', max_digits=4, decimal_places=2, default=2.5)
     weight_units = models.CharField(u'Ед изм', max_length=3, choices=WEIGHT_UNITS, default=u'кг')
 
     pcs = models.DecimalField(u'Единиц в ящике', max_digits=3, decimal_places=1, null=True, blank=True)

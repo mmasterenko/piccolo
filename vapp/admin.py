@@ -20,7 +20,7 @@ class AssortimentAdmin(admin.ModelAdmin):
             'classes': ('wide',)
         }),
         (u'Необязательные поля', {
-            'fields': ('pcs', 'is_hit', 'is_new', 'is_comingSoon'),
+            'fields': ('desc', 'pcs', 'is_hit', 'is_new', 'is_comingSoon'),
             'classes': ('wide',)
         })
     ]
