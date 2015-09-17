@@ -77,6 +77,10 @@ def job(req):
     return render(req, 'vapp/job.html')
 
 
+def contact(req):
+    return render(req, 'vapp/contact.html')
+
+
 def media(req, path):
     file_name = os.path.join(settings.MEDIA_ROOT, path)
     _, file_ext = os.path.splitext(file_name)

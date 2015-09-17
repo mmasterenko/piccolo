@@ -558,11 +558,11 @@ div.news-block .news-row .news-row-in .date {
     margin-right: 19px;
 }
 
-/* * * * * * * *
- * about-page  *
- * * * * * * * */
+/* * * * *
+ * pages *
+ * * * * */
 
-#about-page {
+#job-page, #about-page, #contact-page {
     margin-top: 50px;
     color: #888888;
     font-size: 20px;
@@ -570,22 +570,32 @@ div.news-block .news-row .news-row-in .date {
     font-weight: 300;
 }
 
-/* * * * * * * *
- * job-page  *
- * * * * * * * */
-
-#job-page {
-    margin-top: 50px;
-    color: #888888;
-    font-size: 20px;
-    font-family: Roboto, sans-serif;
-    font-weight: 300;
-}
-
-#job-page a {
+#job-page a, #contact-page a {
     color: #287c1f;
     font-weight: 400;
     padding-left: 10px;
+}
+
+#contact-page ul {
+    list-style-type: none;
+}
+
+#contact-page ul li {
+    margin-top: 5px;
+}
+
+#contact-page ul li span {
+    margin-left: 10px;
+}
+
+#contact-page #ymap {
+    margin-top: 30px;
+}
+
+#contact-page #ymap > ymaps {
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    padding: 4px;
 }
 
 /* * * * * * * *

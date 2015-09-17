@@ -1,0 +1,21 @@
+{% extends 'vapp/page_base.html' %}
+{% load staticfiles %}
+{% block head %}
+{% endblock %}
+{% block title %} КОНТАКТЫ {% endblock %}
+
+{% block page_header_text %} КОНТАКТЫ {% endblock %}
+
+{% block content %}
+    <div id="contact-page">
+        <ul>
+            <li><strong>Адрес:</strong><span>г.Санкт-Петербург, Красное Село, ул. Геологическая 75</span></li>
+            <li><strong>Телефон(факс):</strong><span>8(812)749-87-18</span></li>
+            <li><strong>Email:</strong><span><a href="mailto:info@piccolospb.ru">info@piccolospb.ru</a></span></li>
+        </ul>
+        <div id="ymap">
+            <p>Схема проезда:</p>
+            <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=3wd8L3a1-Q-Nzmkexplv8R32qa4Q6GQa&width=600&height=450"></script>
+        </div>
+    </div>
+{% endblock %}
