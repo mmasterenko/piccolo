@@ -49,12 +49,14 @@
                         <div class="carousel-caption">
                             <a class="x-carousel-action" href="{{ action.url }}">
                                 {% autoescape off %}
+                                    <div class="x-carousel-action-desc">
                                     {% if not action.is_hide_header %}
                                         <h3>{{ action.header }}</h3>
                                     {% endif %}
                                     {% if not action.is_hide_text %}
                                         <p>{{ action.text|striptags }}</p>
                                     {% endif %}
+                                    </div>
                                 {% endautoescape %}
                             </a>
                         </div>

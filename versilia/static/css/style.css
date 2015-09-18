@@ -134,13 +134,13 @@ body, html {
     background-color: #287c1f;
 }
 
-#my-carousel .x-carousel-action {
-    color: #287c1f;
-}
-
 #my-carousel a.x-carousel-action:hover {
     text-decoration: none;
     color: #749471;
+}
+
+#my-carousel .x-carousel-action .x-carousel-action-desc {
+    color: white;
 }
 
 #my-carousel .x-carousel-action h3 {
