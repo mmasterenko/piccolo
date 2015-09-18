@@ -134,6 +134,7 @@ class MyImgStorage(FileSystemStorage):
 
 assort_fs = MyImgStorage(width=360, height=205, img_path='images/middle')
 news_fs = MyImgStorage(width=360, height=205, img_path='images/news')
+action_fs = MyImgStorage(width=1280, height=491, img_path='images/actions')
 
 
 class Category(models.Model):
@@ -176,17 +177,41 @@ class News(models.Model):
 
     header = models.CharField(u'Заголовок', max_length=80)
     text = models.TextField(u'Текст')
-    date = models.DateField(u'Дата', default=now())
+    date = models.DateField(u'Дата', default=now)
     uri_help_text = u'URI под которым будет доступна новость. например: /udivitelnaya-novost/'
     url = models.SlugField(u'URI', help_text=uri_help_text, null=True, blank=True, unique=True, max_length=90)
-    action_help_text = u'Новости-акции "крутятся" в баннере на главной странице'
-    is_action = models.BooleanField(u'Новость-акция', help_text=action_help_text, default=False)
 
     img_width = models.PositiveSmallIntegerField(null=True, blank=True)
     img_height = models.PositiveSmallIntegerField(null=True, blank=True)
     help_text = u'Картинка, которая отображается на главной странице'
     img = models.ImageField(u'Картинка', upload_to='images/news', default='', null=True, blank=True,
                             width_field='img_width', height_field='img_height', help_text=help_text, storage=news_fs)
+    # for SEO
+    meta_keywords = models.CharField('<meta> keywords content', max_length=100, null=True, blank=True)
+    meta_desc = models.CharField('<meta> description content', max_length=100, null=True, blank=True)
+    title = models.CharField('<title>', max_length=100, null=True, blank=True)
+
+
+class Actions(models.Model):
+    def __unicode__(self):
+        return '%s' % self.header
+
+    header = models.CharField(u'Заголовок', max_length=80)
+    text = models.TextField(u'Текст')
+    date = models.DateField(u'Дата', default=now)
+    uri_help_text = u'URI под которым будет доступна акция. например: /novaya-akciya/'
+    url = models.SlugField(u'URI', help_text=uri_help_text, null=True, blank=True, unique=True, max_length=90)
+
+    header_help = u'скрывать заголовок в баннере на главной странице'
+    text_help = u'скрывать текст в баннере на главной странице'
+    is_hide_header = models.BooleanField(u'Скрыть заголовок в баннере', default=False, help_text=header_help)
+    is_hide_text = models.BooleanField(u'Скрыть текст в баннере', default=False, help_text=text_help)
+
+    img_width = models.PositiveSmallIntegerField(u'Ширина (px)', null=True, blank=True)
+    img_height = models.PositiveSmallIntegerField(u'Высота (px)', null=True, blank=True)
+    help_text = u'ВНИМАНИЕ: убедитесь что картинка соотвествует размерам 1280 x 491'
+    img = models.ImageField(u'Картинка', upload_to='images/actions', default='', null=False, blank=True,
+                            width_field='img_width', height_field='img_height', help_text=help_text, storage=action_fs)
     # for SEO
     meta_keywords = models.CharField('<meta> keywords content', max_length=100, null=True, blank=True)
     meta_desc = models.CharField('<meta> description content', max_length=100, null=True, blank=True)

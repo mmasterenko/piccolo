@@ -115,6 +115,12 @@ body, html {
     left: 640px;
 }
 
+#my-carousel .carousel-inner .item img {
+    margin: 0 auto;
+    max-width: 1280px;
+    max-height: 491px;
+}
+
 #my-carousel ol li {
     border-color: #bfbfbf;
     background-color: #bfbfbf;

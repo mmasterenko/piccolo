@@ -39,11 +39,23 @@
             {% if actions %}
                 {% for action in actions %}
                     <div class="{% if forloop.first %}active{% endif %} item">
-                        <img src="{% static 'images/main-picture.jpg' %}" alt="action">
+                        <a href="{{ action.url }}">
+                            {% if action.img %}
+                                <img src="{{ action.img }}" alt="action">
+                            {% else %}
+                                <img src="{% static 'images/main-picture.jpg' %}" alt="action">
+                            {% endif %}
+                        </a>
                         <div class="carousel-caption">
                             <a class="x-carousel-action" href="{{ action.url }}">
-                                <h3>{{ action.header }}</h3>
-                                <p>{{ action.text|striptags }}</p>
+                                {% autoescape off %}
+                                    {% if not action.is_hide_header %}
+                                        <h3>{{ action.header }}</h3>
+                                    {% endif %}
+                                    {% if not action.is_hide_text %}
+                                        <p>{{ action.text|striptags }}</p>
+                                    {% endif %}
+                                {% endautoescape %}
                             </a>
                         </div>
                     </div>

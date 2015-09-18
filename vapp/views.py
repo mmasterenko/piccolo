@@ -5,21 +5,25 @@ import json
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
-from vapp.models import News
+from django.core.urlresolvers import reverse
+from vapp.models import News, Actions
 from vapp.helpers import get_assortiment_list, get_categories_list, get_news_url
 
 
 def main(req):
     categories = get_categories_list()
 
-    actions_queryset = News.objects.filter(is_action=True).order_by('-date')[:6]
+    actions_queryset = Actions.objects.order_by('-date')[:6]
     action_list = [{
                        'header': a.header,
                        'text': a.text,
-                       'url': get_news_url(a)
+                       'img': a.img.url if hasattr(a.img, 'url') else '',
+                       'url': reverse('actions', args=[a.url]) if a.url else reverse('actions', args=[a.id]),
+                       'is_hide_header': a.is_hide_header,
+                       'is_hide_text': a.is_hide_text
                    } for a in actions_queryset]
 
-    news_queryset = News.objects.filter(is_action=False).order_by('-date', 'id')[:3]
+    news_queryset = News.objects.order_by('-date', 'id')[:3]
     news_list = [{
                      'img': n.img.url if hasattr(n.img, 'url') else '',
                      'header': n.header,
@@ -60,6 +64,32 @@ def news(req, news_url=''):
             }}
 
     return render(req, 'vapp/news.html', context=context)
+
+
+def actions(req, action_url=''):
+    context = {}  # default context
+    if not action_url:
+        action = Actions.objects.order_by('-date').first()
+    else:
+        try:
+            selector = int(action_url)
+            action = Actions.objects.filter(id=selector).first()
+        except ValueError:
+            action = Actions.objects.filter(url=action_url).first()
+
+    if action:
+        context = {'action':
+            {
+                'header': action.header,
+                'text': action.text,
+                'date': action.date,
+                'img': action.img.url if hasattr(action.img, 'url') else '',
+                'title': action.title,
+                'meta_keywords': action.meta_keywords,
+                'meta_description': action.meta_desc
+            }}
+
+    return render(req, 'vapp/actions.html', context=context)
 
 
 def assortiment(req, page_id=None):

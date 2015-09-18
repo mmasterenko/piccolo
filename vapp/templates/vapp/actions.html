@@ -1,0 +1,64 @@
+{% extends 'vapp/page_base.html' %}
+{% load staticfiles %}
+{% block meta %}
+    {% if action.meta_keywords %}
+        <meta name="keywords" content="{{ action.meta_keywords }}" />
+    {% endif %}
+    {% if action.meta_description %}
+        <meta name="description" content="{{ action.meta_description }}" />
+    {% endif %}
+{% endblock %}
+{% block title %}
+    {% if action.title %}
+        {{ action.title }}
+    {% else %}
+        АКЦИЯ
+    {% endif %}
+{% endblock %}
+{% block page_header_text %} АКЦИЯ {% endblock %}
+
+{% block content %}
+    <div class="container-fluid news-block">
+        {% if action %}
+        <div class="row news-row">
+            <div class="col-sm-12 news-row-in">
+                <h3 class="header-news-page">{{ action.header|upper }}</h3>
+                <div class="date">
+                    <span>{{ action.date }}</span>
+                </div>
+                <div class="news-block-p">
+                    {% if action.img %}
+                    <img class="news-img" src="{{ action.img }}" alt="action image">
+                    {% endif %}
+                    <div class="full-news-text">
+                        {% autoescape off %}
+                        {{ action.text }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--div class="row x-pagination">
+            <div class="col-sm-12 text-center">
+                <nav>
+                    <ul class="pagination pagination-lg">
+                        <li>
+                            <a href="javascript:void(0)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="active"><a href="javascript:void(0)">1</a></li>
+                        <li><a href="javascript:void(0)">2</a></li>
+                        <li>
+                            <a href="javascript:void(0)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div-->
+        {% endif %}
+    </div>
+{% endblock %}

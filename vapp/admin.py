@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from models import Category, Assortiment, News
+from models import Category, Assortiment, News, Actions
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -33,15 +33,26 @@ class AssortimentAdmin(admin.ModelAdmin):
 class NewsAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ('header', 'text', 'date')}),
-        (u'Необязательные поля', {'fields': ('is_action', 'url', 'img')}),
+        (u'Необязательные поля', {'fields': ('url', 'img')}),
         (u'для SEO', {
             'fields': ('title', 'meta_keywords', 'meta_desc'),
             'classes': ('collapse', 'wide')
         })
     ]
-    list_display = ('header', 'date', 'url', 'img', 'is_action')
+    list_display = ('header', 'date', 'url', 'img')
+
+
+class ActionsAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {'fields': ('header', 'is_hide_header', 'text', 'is_hide_text', 'date', 'img', 'url')}),
+        (u'для SEO', {
+            'fields': ('title', 'meta_keywords', 'meta_desc'),
+            'classes': ('collapse', 'wide')
+        })
+    ]
 
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Assortiment, AssortimentAdmin)
 admin.site.register(News, NewsAdmin)
+admin.site.register(Actions, ActionsAdmin)
