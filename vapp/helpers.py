@@ -1,4 +1,5 @@
 from vapp.models import Category, Assortiment
+from django.core.urlresolvers import reverse
 
 
 def get_assortiment_list(category_id, limit=None):
@@ -34,3 +35,7 @@ def get_assortiment_list(category_id, limit=None):
 def get_categories_list():
     category_queryset = Category.objects.order_by('order', 'id')
     return [dict(id=c.id, name=c.name.upper()) for c in category_queryset]
+
+
+def get_news_url(n):
+    return reverse('news', args=[n.url]) if n.url else reverse('news', args=[n.id])

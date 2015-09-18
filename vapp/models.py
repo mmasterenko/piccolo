@@ -177,7 +177,10 @@ class News(models.Model):
     header = models.CharField(u'Заголовок', max_length=80)
     text = models.TextField(u'Текст')
     date = models.DateField(u'Дата', default=now())
-    url = models.SlugField(u'URL', null=True, blank=True, unique=True, max_length=90)
+    uri_help_text = u'URI под которым будет доступна новость. например: /udivitelnaya-novost/'
+    url = models.SlugField(u'URI', help_text=uri_help_text, null=True, blank=True, unique=True, max_length=90)
+    action_help_text = u'Новости-акции "крутятся" в баннере на главной странице'
+    is_action = models.BooleanField(u'Новость-акция', help_text=action_help_text, default=False)
 
     img_width = models.PositiveSmallIntegerField(null=True, blank=True)
     img_height = models.PositiveSmallIntegerField(null=True, blank=True)

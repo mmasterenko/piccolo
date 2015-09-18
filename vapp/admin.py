@@ -33,13 +33,13 @@ class AssortimentAdmin(admin.ModelAdmin):
 class NewsAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ('header', 'text', 'date')}),
-        (u'Необязательные поля', {'fields': ('url', 'img')}),
+        (u'Необязательные поля', {'fields': ('is_action', 'url', 'img')}),
         (u'для SEO', {
             'fields': ('title', 'meta_keywords', 'meta_desc'),
             'classes': ('collapse', 'wide')
         })
     ]
-    list_display = ('header', 'date', 'url', 'img')
+    list_display = ('header', 'date', 'url', 'img', 'is_action')
 
 
 admin.site.register(Category, CategoryAdmin)

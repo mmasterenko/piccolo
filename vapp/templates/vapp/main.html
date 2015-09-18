@@ -24,31 +24,41 @@
     <div id="my-carousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#my-carousel" data-slide-to="1"></li>
+            {% if actions|length > 1 %}
+                {% for action in actions %}
+                    {% with i=forloop.counter0 f=forloop.first %}
+                        <li data-target="#my-carousel" data-slide-to="{{ i }}" {% if f %}class="active"{% endif %}></li>
+                    {% endwith %}
+                {% endfor %}
+            {% endif %}
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
 
-            <div class="item active">
-                <img src="{% static 'images/main-picture.jpg' %}" alt="first">
-                <div class="carousel-caption">
-                    <!--h3>title</h3>
-                    <p>text</p-->
+            {% if actions %}
+                {% for action in actions %}
+                    <div class="{% if forloop.first %}active{% endif %} item">
+                        <img src="{% static 'images/main-picture.jpg' %}" alt="action">
+                        <div class="carousel-caption">
+                            <a class="x-carousel-action" href="{{ action.url }}">
+                                <h3>{{ action.header }}</h3>
+                                <p>{{ action.text|striptags }}</p>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="item active">
+                    <img src="{% static 'images/main-picture.jpg' %}" alt="action">
+                    <div class="carousel-caption"></div>
                 </div>
-            </div>
-            <div class="item">
-                <img src="{% static 'images/main-picture.jpg' %}" alt="second">
-                <div class="carousel-caption">
-                    <!--h3>title</h3>
-                    <p>text</p-->
-                </div>
-            </div>
+            {% endif %}
 
         </div>
 
         <!-- Controls -->
+    {% if actions|length > 1 %}
         <a class="left carousel-control" href="#my-carousel" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -57,6 +67,7 @@
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+    {% endif %}
     </div>
 
     <div class="container-fluid">
@@ -108,41 +119,39 @@
                     </div>
                 </nav>
 
-                    <div ng-repeat="cookie_row in cookies" class="row x-assort-row">
-
-                            <div ng-repeat="cookie in cookie_row" class="col-sm-4 x-assort-col">
-                                <div class="x-frame">
-                                    <span class="x-helper"></span>
-                                    {% verbatim %}
-                                    <img ng-src="{{ cookie.img }}" alt="cookie">
-                                    {% endverbatim %}
-                                </div>
-                                <h4 ng-bind="cookie.name"></h4>
-                                <table>
-                                    <tr ng-if="cookie.pcs_weight">
-                                        <td>Вес единицы</td>
-                                        <td ng-bind="cookie.pcs_weight + ' ' + cookie.weight_units"></td>
-                                    </tr>
-                                    <tr ng-if="cookie.pcs_per_box">
-                                        <td>Единиц в ящике</td>
-                                        <td ng-bind="cookie.pcs_per_box"></td>
-                                    </tr>
-                                    <tr ng-if="cookie.shelf_life">
-                                        <td>Срок реализации</td>
-                                        <td ng-bind="cookie.shelf_life + ' дней'"></td>
-                                    </tr>
-                                    <tr ng-if="cookie.is_someFlag">
-                                        <td>
-                                            <span ng-if="cookie.is_hit" style="margin-right: 2px" class="label label-danger">хит</span>
-                                            <span ng-if="cookie.is_new" style="margin-right: 2px" class="label label-success">нов</span>
-                                            <span ng-if="cookie.is_comingSoon" style="margin-right: 2px" class="label label-warning">скоро</span>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                </table>
-                            </div>
-
+                <div ng-repeat="cookie_row in cookies" class="row x-assort-row">
+                    <div ng-repeat="cookie in cookie_row" class="col-sm-4 x-assort-col">
+                        <div class="x-frame">
+                            <span class="x-helper"></span>
+                            {% verbatim %}
+                            <img ng-src="{{ cookie.img }}" alt="cookie">
+                            {% endverbatim %}
+                        </div>
+                        <h4 ng-bind="cookie.name"></h4>
+                        <table>
+                            <tr ng-if="cookie.pcs_weight">
+                                <td>Вес единицы</td>
+                                <td ng-bind="cookie.pcs_weight + ' ' + cookie.weight_units"></td>
+                            </tr>
+                            <tr ng-if="cookie.pcs_per_box">
+                                <td>Единиц в ящике</td>
+                                <td ng-bind="cookie.pcs_per_box"></td>
+                            </tr>
+                            <tr ng-if="cookie.shelf_life">
+                                <td>Срок реализации</td>
+                                <td ng-bind="cookie.shelf_life + ' дней'"></td>
+                            </tr>
+                            <tr ng-if="cookie.is_someFlag">
+                                <td>
+                                    <span ng-if="cookie.is_hit" style="margin-right: 2px" class="label label-danger">хит</span>
+                                    <span ng-if="cookie.is_new" style="margin-right: 2px" class="label label-success">нов</span>
+                                    <span ng-if="cookie.is_comingSoon" style="margin-right: 2px" class="label label-warning">скоро</span>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
                     </div>
+                </div>
 
                 <div class="row">
                     <div class="col-sm-4"></div>

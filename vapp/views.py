@@ -3,27 +3,35 @@
 import os
 import json
 from django.shortcuts import render
-from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.conf import settings
 from vapp.models import News
-from vapp.helpers import get_assortiment_list, get_categories_list
+from vapp.helpers import get_assortiment_list, get_categories_list, get_news_url
 
 
 def main(req):
     categories = get_categories_list()
-    news_queryset = News.objects.order_by('-date', 'id')[:3]
+
+    actions_queryset = News.objects.filter(is_action=True).order_by('-date')[:6]
+    action_list = [{
+                       'header': a.header,
+                       'text': a.text,
+                       'url': get_news_url(a)
+                   } for a in actions_queryset]
+
+    news_queryset = News.objects.filter(is_action=False).order_by('-date', 'id')[:3]
     news_list = [{
                      'img': n.img.url if hasattr(n.img, 'url') else '',
                      'header': n.header,
                      'text': n.text,
                      'date': n.date,
-                     'url': reverse(news, args=[n.url]) if n.url else reverse(news, args=[n.id])
+                     'url': get_news_url(n)
                  } for n in news_queryset]
 
     context = {
         'categories': categories,
-        'news': news_list
+        'news': news_list,
+        'actions': action_list
     }
     return render(req, 'vapp/main.html', context=context)
 
