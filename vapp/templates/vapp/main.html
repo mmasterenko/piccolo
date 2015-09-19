@@ -54,7 +54,7 @@
                                         <h3>{{ action.header }}</h3>
                                     {% endif %}
                                     {% if not action.is_hide_text %}
-                                        <p>{{ action.text|striptags }}</p>
+                                        <p>{{ action.text|truncatewords_html:30|striptags }}</p>
                                     {% endif %}
                                     </div>
                                 {% endautoescape %}

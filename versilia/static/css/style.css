@@ -139,18 +139,32 @@ body, html {
     color: #749471;
 }
 
+
+#my-carousel a.x-carousel-action:focus {
+    text-decoration: none;
+    color: #749471;
+}
+
 #my-carousel .x-carousel-action .x-carousel-action-desc {
     color: white;
+    padding: 90px 0;
+    background-image: -moz-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 70%);
+    background-image: -webkit-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 70%);
+    background-image: -o-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 70%);
+    background-image: -ms-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 70%);
+    background-image: radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 70%);
 }
 
 #my-carousel .x-carousel-action h3 {
     font-size: 30px;
-    text-shadow: 0 1px 40px #888888;
 }
 
 #my-carousel .x-carousel-action p {
     font-size: 25px;
-    text-shadow: 0 1px 40px #888888;
+}
+
+#my-carousel .x-carousel-action .x-carousel-action-desc h3:hover {
+    text-shadow: 1px 1px 2px black;
 }
 
 /* * * * * * * *
