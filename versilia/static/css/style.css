@@ -407,6 +407,7 @@ div.news-block .news-row .news-row-in .date {
     width: 1280px;
     height: 364px;
     margin: 0 auto;
+    clear: both;
 }
 
 #footer .footer {
@@ -624,6 +625,9 @@ div.news-block .news-row .news-row-in .date {
 
 #contact-page ul {
     list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 40px;
 }
 
 #contact-page ul li {
@@ -635,13 +639,18 @@ div.news-block .news-row .news-row-in .date {
 }
 
 #contact-page #ymap {
-    margin-top: 30px;
+    float: left;
+    margin-bottom: 40px;
+    margin-top: 0;
+    margin-left: 50px;
 }
 
 #contact-page #ymap > ymaps {
     border: 1px solid lightgrey;
     border-radius: 4px;
     padding: 4px;
+    width: 500px !important;
+    height: 350px !important;
 }
 
 /* * * * * * * *
