@@ -49,14 +49,16 @@
                         <div class="carousel-caption">
                             <a class="x-carousel-action" href="{{ action.url }}">
                                 {% autoescape off %}
-                                    <div class="x-carousel-action-desc">
-                                    {% if not action.is_hide_header %}
-                                        <h3>{{ action.header }}</h3>
-                                    {% endif %}
-                                    {% if not action.is_hide_text %}
-                                        <p>{{ action.text|truncatewords_html:30|striptags }}</p>
-                                    {% endif %}
-                                    </div>
+                                    {% with  h=action.is_hide_header t=action.is_hide_text  %}
+                                        <div {% if not h or not t %}style="padding: 50px 0"{% endif %} class="x-carousel-action-desc">
+                                        {% if not action.is_hide_header %}
+                                            <h3>{{ action.header }}</h3>
+                                        {% endif %}
+                                        {% if not action.is_hide_text %}
+                                            <p>{{ action.text|truncatewords_html:30|striptags }}</p>
+                                        {% endif %}
+                                        </div>
+                                    {% endwith %}
                                 {% endautoescape %}
                             </a>
                         </div>

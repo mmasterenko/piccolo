@@ -147,12 +147,11 @@ body, html {
 
 #my-carousel .x-carousel-action .x-carousel-action-desc {
     color: white;
-    padding: 90px 0;
-    background-image: -moz-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 70%);
-    background-image: -webkit-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 70%);
-    background-image: -o-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 70%);
-    background-image: -ms-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 70%);
-    background-image: radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 70%);
+    background-image: -moz-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 75%);
+    background-image: -webkit-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 75%);
+    background-image: -o-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 75%);
+    background-image: -ms-radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 75%);
+    background-image: radial-gradient(center center, ellipse closest-corner, rgba(110, 110, 110, 0.8), rgba(0, 0, 0, 0) 75%);
 }
 
 #my-carousel .x-carousel-action h3 {
