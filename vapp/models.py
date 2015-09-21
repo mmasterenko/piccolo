@@ -10,6 +10,30 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.utils.timezone import now
 from PIL import Image
+from django.utils import six
+from django.utils.encoding import smart_text
+
+
+class SlugNullField(models.SlugField):
+    description = "SlugField that stores NULL but returns '' "
+
+    def to_python(self, value):
+
+        if value is None:
+            return ''
+        if isinstance(value, six.string_types):
+            return value
+        return smart_text(value)
+
+    def get_prep_value(self, value):  # catches value right before sending to db
+
+        value = super(SlugNullField, self).get_prep_value(value)
+        if value == '':
+            # if Django tries to save an empty string, send the db None (NULL)
+            return None
+        else:
+            # otherwise, just pass the value
+            return self.to_python(value)
 
 
 class MyImgStorage(FileSystemStorage):
@@ -179,7 +203,7 @@ class News(models.Model):
     text = models.TextField(u'Текст')
     date = models.DateField(u'Дата', default=now)
     uri_help_text = u'URI под которым будет доступна новость. например: /udivitelnaya-novost/'
-    url = models.SlugField(u'URI', help_text=uri_help_text, null=True, blank=True, unique=True, max_length=90)
+    url = SlugNullField(u'URI', help_text=uri_help_text, null=True, blank=True, unique=True, max_length=90, default=None)
 
     img_width = models.PositiveSmallIntegerField(null=True, blank=True)
     img_height = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -200,7 +224,7 @@ class Actions(models.Model):
     text = models.TextField(u'Текст')
     date = models.DateField(u'Дата', default=now)
     uri_help_text = u'URI под которым будет доступна акция. например: /novaya-akciya/'
-    url = models.SlugField(u'URI', help_text=uri_help_text, null=True, blank=True, unique=True, max_length=90)
+    url = SlugNullField(u'URI', help_text=uri_help_text, null=True, blank=True, unique=True, max_length=90, default=None)
 
     header_help = u'скрывать заголовок в баннере на главной странице'
     text_help = u'скрывать текст в баннере на главной странице'
