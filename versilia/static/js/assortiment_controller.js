@@ -9,6 +9,9 @@ app.controller('AssortController', function ($scope, $http) {
         $http.get("/api/" + cat_id).success(function(response){
                 $scope.cookies = response;
             });
+
+        var href = $('#assortiment-link').attr('href') + cat_id;
+        $('#all-menu').attr('href', href);
     };
 
     var id = $('#assort-block ul li a').first().attr('id');

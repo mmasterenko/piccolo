@@ -12,7 +12,7 @@
             <ul class="nav navbar-nav">
                 <li class="x-active"><a href="javascript:void(0)">ГЛАВНАЯ</a></li>
                 <li><a href="{% url 'about' %}">О НАС</a></li>
-                <li><a href="{% url 'assortiment' %}">АССОРТИМЕНТ</a></li>
+                <li><a href="{% url 'assortiment' %}" id="assortiment-link">АССОРТИМЕНТ</a></li>
                 <li><a href="{% url 'news' %}">НОВОСТИ</a></li>
                 <li><a href="{% url 'job' %}">ВАКАНСИИ</a></li>
                 <li><a href="{% url 'contact' %}">КОНТАКТЫ</a></li>
@@ -172,7 +172,7 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4 x-assort-col">
-                        <a href="{% url 'assortiment' %}"><button class="x-button">ВСЕ МЕНЮ</button></a>
+                        <a id="all-menu" href="{% url 'assortiment' %}"><button class="x-button">ВСЕ МЕНЮ</button></a>
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
