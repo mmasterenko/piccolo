@@ -3,9 +3,10 @@
 import os
 import json
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.core.paginator import Paginator
 from vapp.models import News, Actions
 from vapp.helpers import get_assortiment_list, get_categories_list, get_news_url
 
@@ -43,7 +44,7 @@ def main(req):
 def news(req, news_url=''):
     context = {}  # default context
     if not news_url:
-        news_object = News.objects.order_by('-date').first()
+        return HttpResponseRedirect('/news/pages/1/')
     else:
         try:
             selector = int(news_url)
@@ -64,6 +65,15 @@ def news(req, news_url=''):
             }}
 
     return render(req, 'vapp/news.html', context=context)
+
+
+def news_pages(req, page=None):
+    if not page:
+        page = 1
+    all_news = News.objects.order_by('-date', '-id')
+    paginator = Paginator(all_news, 2)
+    news_page = paginator.page(page)
+    return render(req, 'vapp/news.html', {'news_page': news_page})
 
 
 def actions(req, action_url=''):

@@ -22,7 +22,8 @@ urlpatterns = [
 
     url(r'^$', views.main, name='main'),
     url(r'^news/$', views.news, name='news'),
-    url(r'^news/(?P<news_url>.+)/$', views.news, name='news'),
+    url(r'^news/pages/(?P<page>[0-9]+)/$', views.news_pages, name='news_pages'),
+    url(r'^news/(?P<news_url>[-a-zA-Z0-9_]+)/$', views.news, name='news'),
 
     url(r'^actions/$', views.actions, name='actions'),
     url(r'^actions/(?P<action_url>.+)/$', views.actions, name='actions'),
