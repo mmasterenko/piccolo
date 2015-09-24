@@ -475,6 +475,15 @@ div.news-block .news-row .news-row-in .date {
     padding-left: 0;
 }
 
+#footer .x-copyright {
+    float: right;
+    margin-right: 40px;
+}
+
+#footer .x-copyright a {
+    color: #287c1f;
+}
+
 /* * * * * * *
  * news page *
  * * * * * * */
