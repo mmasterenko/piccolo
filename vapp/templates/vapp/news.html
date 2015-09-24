@@ -62,33 +62,35 @@
                     </div>
                 </div>
             {% endfor %}
-            <div class="row x-pagination">
-                <div class="col-sm-12 text-center">
-                    <nav>
-                        <ul class="pagination pagination-lg">
-                            {% if news_page.has_previous %}
-                                <li>
-                                    <a href="{% url 'news_pages' news_page.previous_page_number %}" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                            {% endif %}
-                            {% for n_page in news_page.paginator.page_range %}
-                                <li {% if news_page.number == n_page %}class="active"{% endif %}>
-                                    <a href="{% url 'news_pages' n_page %}">{{ n_page }}</a>
-                                </li>
-                            {% endfor %}
-                            {% if news_page.has_next %}
-                                <li>
-                                    <a href="{% url 'news_pages' news_page.next_page_number %}" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </nav>
+            {% if news_page.paginator.num_pages > 1 %}
+                <div class="row x-pagination">
+                    <div class="col-sm-12 text-center">
+                        <nav>
+                            <ul class="pagination pagination-lg">
+                                {% if news_page.has_previous %}
+                                    <li>
+                                        <a href="{% url 'news_pages' news_page.previous_page_number %}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% for n_page in news_page.paginator.page_range %}
+                                    <li {% if news_page.number == n_page %}class="active"{% endif %}>
+                                        <a href="{% url 'news_pages' n_page %}">{{ n_page }}</a>
+                                    </li>
+                                {% endfor %}
+                                {% if news_page.has_next %}
+                                    <li>
+                                        <a href="{% url 'news_pages' news_page.next_page_number %}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}

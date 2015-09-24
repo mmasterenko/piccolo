@@ -71,7 +71,7 @@ def news_pages(req, page=None):
     if not page:
         page = 1
     all_news = News.objects.order_by('-date', '-id')
-    paginator = Paginator(all_news, 5)
+    paginator = Paginator(all_news, 4)
     news_page = paginator.page(page)
     return render(req, 'vapp/news.html', {'news_page': news_page})
 
