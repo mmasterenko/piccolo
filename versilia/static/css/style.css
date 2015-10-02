@@ -618,7 +618,7 @@ div.news-block .news-row .news-row-in .date {
  * pages *
  * * * * */
 
-#job-page, #about-page, #contact-page {
+#job-page, #about-page, #contact-page, #distributor-page {
     margin-top: 50px;
     color: #888888;
     font-size: 20px;
@@ -626,25 +626,15 @@ div.news-block .news-row .news-row-in .date {
     font-weight: 300;
 }
 
-#job-page a, #contact-page a {
+#job-page a, #about-page a, #contact-page a, #distributor-page a {
     color: #287c1f;
     font-weight: 400;
-    padding-left: 10px;
 }
 
-#contact-page ul {
-    list-style-type: none;
+#contact-page .x-content {
     float: right;
     margin-right: 70px;
     margin-top: 40px;
-}
-
-#contact-page ul li {
-    margin-top: 5px;
-}
-
-#contact-page ul li span {
-    margin-left: 10px;
 }
 
 #contact-page #ymap {

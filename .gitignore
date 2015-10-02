@@ -1,15 +1,15 @@
-venv
 *.pyc
-staticfiles
 .env
 .idea
+venv
 db.sqlite3
-
+staticfiles
 versilia/static/js/makeup.js
 versilia/static/js/news.png
 versilia/static/js/main.png
 versilia/static/js/assortiment.png
 vapp/migrations
+pages/migrations
 vapp/uploaded/
 versilia/settings_dev.py
 

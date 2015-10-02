@@ -6,5 +6,8 @@
 
 {% block content %}
     <div id="distributor-page">
+        {% autoescape off %}
+            {{ page.text }}
+        {% endautoescape %}
     </div>
 {% endblock %}

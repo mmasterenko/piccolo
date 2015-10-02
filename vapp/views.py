@@ -8,6 +8,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator
 from vapp.models import News, Actions
+from pages.models import About, Contact, Distributor, Job
 from vapp.helpers import get_assortiment_list, get_categories_list, get_news_url
 
 
@@ -118,19 +119,23 @@ def assortiment(req, page_id=None):
 
 
 def about(req):
-    return render(req, 'vapp/about.html')
+    page = About.objects.first()
+    return render(req, 'vapp/about.html', {'page': page})
 
 
 def job(req):
-    return render(req, 'vapp/job.html')
+    page = Job.objects.first()
+    return render(req, 'vapp/job.html', {'page': page})
 
 
 def contact(req):
-    return render(req, 'vapp/contact.html')
+    page = Contact.objects.first()
+    return render(req, 'vapp/contact.html', {'page': page})
 
 
 def distributor(req):
-    return render(req, 'vapp/distributor.html')
+    page = Distributor.objects.first()
+    return render(req, 'vapp/distributor.html', {'page': page})
 
 
 def media(req, path):
