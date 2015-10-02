@@ -26,3 +26,10 @@ class Distributor(models.Model):
         return '%s' % u'ПОСТАВЩИКАМ'
     text = models.TextField(u'Содержание')
 
+
+class General(models.Model):
+    def __unicode__(self):
+        return '%s' % u'ОБЩАЯ ИНФОРМАЦИЯ'
+    address = models.CharField(u'Адрес', max_length=60)
+    phone = models.CharField(u'Телефон', max_length=20)
+    email = models.EmailField(u'E-mail')
