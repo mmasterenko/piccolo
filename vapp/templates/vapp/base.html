@@ -46,7 +46,7 @@
         <div class="row main-logo-bar">
             <div class="col-sm-4 col-md-4">
                 <div id="header-phone">
-                    <span class="phone-text green-text">8(812)749-87-18</span>
+                    <span class="phone-text green-text">{{ phone }}</span>
                 </div>
             </div>
             <div class="col-sm-4 col-md-4 x-float-left">
@@ -74,15 +74,15 @@
                     <h4>КОНТАКТЫ</h4>
                     <div class="address contacts">
                         <span>АДРЕС:</span>
-                        <span>г.Санкт-Петербург, Красное Село, ул.Геологическая 75</span>
+                        <span>{{ address }}</span>
                     </div>
                     <div class="phone contacts">
                         <span>ТЕЛЕФОН:</span>
-                        <span>8(812)749-87-18</span>
+                        <span>{{ phone }}</span>
                     </div>
                     <div class="email contacts">
                         <span>E-MAIL:</span>
-                        <a href="mailto:info@piccolospb.ru">info@piccolospb.ru</a>
+                        <a href="mailto:{{ email }}">{{ email }}</a>
                     </div>
                 </div>
                 <div class="col-sm-3 x-map-col">
