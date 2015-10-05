@@ -3,7 +3,8 @@ body, html {
 }
 
 .main-wrapper {
-    width: 1280px;
+    width: 100%;
+    max-width: 1280px;
     margin: 0 auto -309px;
     font-family: Roboto, sans-serif;
     min-height: 100%;
@@ -117,6 +118,7 @@ body, html {
 
 #my-carousel .carousel-inner .item img {
     margin: 0 auto;
+    width: 100%;
     max-width: 1280px;
     max-height: 491px;
 }
@@ -404,7 +406,8 @@ div.news-block .news-row .news-row-in .date {
 
 #footer {
     font-family: Roboto, sans-serif;
-    width: 1280px;
+    width: 100%;
+    max-width: 1280px;
     height: 364px;
     margin: 0 auto;
     clear: both;
@@ -677,3 +680,132 @@ div.news-block .news-row .news-row-in .date {
     border-color: #b7b7b7 !important;
     color: #888888 !important;
 }
+
+
+@media screen and (max-width: 1280px) {
+
+    .main-logo-bar img {
+        margin-left: 0;
+    }
+
+    .phone-text {
+        font-size: 20px;
+    }
+
+    #main-menu {
+        font-size: 22px;
+    }
+
+    #main-menu ul li, #main-menu.assortiment-menu ul li.x-active {
+        padding: 20px 14px;
+    }
+
+    #news-block .x-news-col {
+        padding: 0;
+        width: 29%;
+        margin-left: 16px;
+        margin-right: 14px;
+    }
+
+    #news-block p {
+        font-size: 14px;
+    }
+
+    #news-block .x-row {
+        margin-top: 20px;
+        margin-left: 17px;
+    }
+
+    #news-block h3, #assort-block h3, .news-block h3 {
+        font-size: 24px;
+    }
+
+    #assort-block nav {
+        font-size: 15px;
+    }
+
+    #assort-block ul li a {
+        padding: 10px 12px;
+    }
+
+    #assort-block h4 {
+        font-size: 14px;
+        margin-top: 7px;
+        margin-bottom: 17px;
+    }
+
+    #assort-block .x-assort-col {
+        width: 31%;
+    }
+
+    #assort-block .x-assort-row .x-assort-col .x-frame img {
+        max-width: 96%;
+    }
+
+    #assort-block .x-assort-row .x-assort-col .x-frame {
+        margin-right: 10px;
+        margin-top: 8px;
+
+        width: 110px;
+        height: 110px;
+    }
+
+    #assort-block table {
+        font-size: 12px;
+        width: 55%;
+    }
+
+    /*#footer {
+        width: 90%;
+        height: 364px;
+    }*/
+
+    #footer .footer {
+        height: 270px;
+    }
+
+    #footer img#footer-logo {
+        margin-top: 42px;
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    #footer h4 {
+        font-size: 15px;
+        margin-top: 39px;
+        padding-left: 0;
+        margin-bottom: 21px;
+    }
+
+    #footer .contacts {
+        margin-top: 12px;
+        padding-left: 37px;
+        font-size: 12px;
+        margin-left: 0;
+        height: 29px;
+    }
+
+    #footer .x-map-col {
+        padding: 0;
+        margin-left: 0;
+    }
+
+    #footer .x-map-col img {
+        max-width: 95%;
+        height: inherit;
+    }
+
+    #footer .license {
+        font-size: 15px;
+        padding-top: 15px;
+        padding-left: 40px;
+    }
+
+}
+
+@media screen and (max-width: 1096px) {
+    #main-menu {
+        font-size: 17px;
+    }
+}
+
