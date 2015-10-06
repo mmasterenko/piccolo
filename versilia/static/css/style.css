@@ -696,8 +696,20 @@ div.news-block .news-row .news-row-in .date {
         font-size: 22px;
     }
 
-    #main-menu ul li, #main-menu.assortiment-menu ul li.x-active {
+    #main-menu ul li, #main-menu ul li.x-active {
         padding: 20px 14px;
+    }
+
+    #main-menu ul li:hover {
+        padding: 20px 14px;
+    }
+
+    #main-menu.assortiment-menu ul li, #main-menu.assortiment-menu ul li.x-active  {
+        padding: 15px 14px;
+    }
+
+    #main-menu.assortiment-menu ul li:hover {
+        padding: 15px 13px;
     }
 
     #news-block .x-news-col {
@@ -717,7 +729,7 @@ div.news-block .news-row .news-row-in .date {
     }
 
     #news-block h3, #assort-block h3, .news-block h3 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     #assort-block nav {
@@ -799,6 +811,57 @@ div.news-block .news-row .news-row-in .date {
         font-size: 15px;
         padding-top: 15px;
         padding-left: 40px;
+    }
+
+    .x-pageheader div.h3, .x-pageheader h2 {
+        font-size: 55px;
+    }
+
+    #assort-block.assort-page .x-assort-page-row .x-assort-page-col .x-frame {
+        width: 90%;
+        min-height: 210px;
+    }
+
+    #assort-block.assort-page .x-assort-page-row img.cake-img {
+        max-width: 97%;
+        max-height: 97%;
+    }
+
+    #assort-block.assort-page .x-assort-page-row img.icon-img {
+        margin-top: 5px;
+        margin-right: 10px;
+        max-width: 55px;
+    }
+
+    #assort-block.assort-page .x-assort-page-row table {
+        font-size: 18px;
+        width: 70%;
+    }
+
+    #job-page, #about-page, #contact-page, #distributor-page {
+        padding: 0 30px;
+        font-size: 18px;
+    }
+
+    #contact-page .x-content {
+        width: 53%;
+        margin-right: 0;
+    }
+
+    #contact-page #ymap {
+        margin-top: 0;
+        margin-left: 20px;
+        width: 42%;
+    }
+
+    #contact-page #ymap > ymaps {
+        padding: 4px;
+        width: 100% !important;
+        height: 350px !important;
+    }
+
+    div.news-block div.full-news-text {
+        font-size: 18px;
     }
 
 }
