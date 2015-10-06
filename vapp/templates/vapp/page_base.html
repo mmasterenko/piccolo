@@ -1,14 +1,29 @@
 {% extends 'vapp/base.html' %}
+{% load vapp_extras %}
 
 {% block page_header %}
 
+    <nav id="main-menu" class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li {% x_active_class 'main' %}><a href="{% url 'main' %}">ГЛАВНАЯ</a></li>
+                <li {% x_active_class 'about' %}><a href="{% url 'about' %}">О НАС</a></li>
+                <li {% x_active_class 'assortiment' %}><a href="{% url 'assortiment' %}" id="assortiment-link">АССОРТИМЕНТ</a></li>
+                <li {% x_active_class 'news' %}><a href="{% url 'news' %}">НОВОСТИ</a></li>
+                <li {% x_active_class 'job' %}><a href="{% url 'job' %}">ВАКАНСИИ</a></li>
+                <li {% x_active_class 'contact' %}><a href="{% url 'contact' %}">КОНТАКТЫ</a></li>
+                <li {% x_active_class 'distributor' %}><a href="{% url 'distributor' %}">ПОСТАВЩИКАМ</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="x-pageheader">
-        <a href="{% url 'main' %}">
+        {% comment %}<a href="{% url 'main' %}">
             <div class="h3">
                 <span class="glyphicon glyphicon-menu-left"></span>
                 <span>НА ГЛАВНУЮ</span>
             </div>
-        </a>
+        </a>{% endcomment %}
         <h2>
             {% block page_header_text %}  {% endblock %}
         </h2>

@@ -90,12 +90,16 @@ body, html {
     padding: 29px 22px;
 }
 
+#main-menu.assortiment-menu ul li.x-active {
+    background-color: inherit;
+}
+
 #main-menu ul li a {
     padding: 0;
     color: #333333;
 }
 
-#main-menu ul li:hover {
+#main-menu ul li:hover, #main-menu ul li.x-active {
     background-color: #e4e4e4;
 }
 
