@@ -14,6 +14,7 @@ class CategoryAdmin(admin.ModelAdmin):
     ]
     list_display = ('name', 'order')
     ordering = ('order', 'id')
+    list_editable = ('order',)
 
 
 class AssortimentAdmin(admin.ModelAdmin):
@@ -28,6 +29,8 @@ class AssortimentAdmin(admin.ModelAdmin):
         })
     ]
     list_display = ('name', 'category', 'weight', 'weight_units', 'days', 'is_hit', 'is_new', 'is_comingSoon', 'img')
+    list_filter = ('category', 'is_hit', 'is_new', 'is_comingSoon')
+    search_fields = ('name', 'days')
 
 
 class NewsAdmin(admin.ModelAdmin):

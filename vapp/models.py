@@ -8,6 +8,7 @@ from django.core.files.move import file_move_safe
 from django.db import models
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+from django.core.urlresolvers import reverse
 from django.utils.timezone import now
 from PIL import Image
 from django.utils import six
@@ -173,6 +174,9 @@ class Assortiment(models.Model):
     def __unicode__(self):
         return '%s' % self.name
 
+    def get_absolute_url(self):
+        return reverse('assortiment', args=[self.category_id])
+
     WEIGHT_UNITS = ((u'г', u'г'), (u'кг', u'кг'))
 
     category = models.ForeignKey(Category, verbose_name=u'Категория')
@@ -199,6 +203,9 @@ class News(models.Model):
     def __unicode__(self):
         return '%s' % self.header
 
+    def get_absolute_url(self):
+        return reverse('news', args=[self.id])
+
     header = models.CharField(u'Заголовок', max_length=80)
     text = models.TextField(u'Текст')
     date = models.DateField(u'Дата', default=now)
@@ -219,6 +226,9 @@ class News(models.Model):
 class Actions(models.Model):
     def __unicode__(self):
         return '%s' % self.header
+
+    def get_absolute_url(self):
+        return reverse('actions', args=[self.id])
 
     header = models.CharField(u'Заголовок', max_length=80)
     text = models.TextField(u'Текст')
