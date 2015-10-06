@@ -50,6 +50,7 @@ class ActionsAdmin(admin.ModelAdmin):
             'classes': ('collapse', 'wide')
         })
     ]
+    list_display = ('header', 'date', 'url', 'is_hide_header', 'is_hide_text', 'img')
 
 
 admin.site.register(Category, CategoryAdmin)
