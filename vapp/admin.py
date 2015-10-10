@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
+from versilia.admin_site import custom_admin_site
 from models import Category, Assortiment, News, Actions
 
 
@@ -56,7 +57,7 @@ class ActionsAdmin(admin.ModelAdmin):
     list_display = ('header', 'date', 'url', 'is_hide_header', 'is_hide_text', 'img')
 
 
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(Assortiment, AssortimentAdmin)
-admin.site.register(News, NewsAdmin)
-admin.site.register(Actions, ActionsAdmin)
+custom_admin_site.register(Category, CategoryAdmin)
+custom_admin_site.register(Assortiment, AssortimentAdmin)
+custom_admin_site.register(News, NewsAdmin)
+custom_admin_site.register(Actions, ActionsAdmin)

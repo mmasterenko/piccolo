@@ -1,4 +1,5 @@
 from django.contrib import admin
+from versilia.admin_site import custom_admin_site
 from django.core.urlresolvers import reverse
 from pages.models import About, Contact, Job, Distributor, General
 
@@ -36,8 +37,8 @@ class DistributorAdmin(admin.ModelAdmin):
         return reverse('distributor')
 
 
-admin.site.register(About, AboutAdmin)
-admin.site.register(Job, JobAdmin)
-admin.site.register(Contact, ContactAdmin)
-admin.site.register(Distributor, DistributorAdmin)
-admin.site.register(General, GeneralAdmin)
+custom_admin_site.register(About, AboutAdmin)
+custom_admin_site.register(Job, JobAdmin)
+custom_admin_site.register(Contact, ContactAdmin)
+custom_admin_site.register(Distributor, DistributorAdmin)
+custom_admin_site.register(General, GeneralAdmin)
