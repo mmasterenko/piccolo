@@ -163,6 +163,9 @@ action_fs = MyImgStorage(width=1280, height=491, img_path='images/actions')
 
 
 class Category(models.Model):
+    class Meta:
+        verbose_name_plural = u'Категории товара'
+
     def __unicode__(self):
         return '%s' % self.name
     help_text = u'Позволяет менять порядок следования в меню'
@@ -171,6 +174,9 @@ class Category(models.Model):
 
 
 class Assortiment(models.Model):
+    class Meta:
+        verbose_name_plural = u'Ассортимент'
+
     def __unicode__(self):
         return '%s' % self.name
 
@@ -200,6 +206,9 @@ class Assortiment(models.Model):
 
 
 class News(models.Model):
+    class Meta:
+        verbose_name_plural = u'Новости'
+
     def __unicode__(self):
         return '%s' % self.header
 
@@ -224,6 +233,9 @@ class News(models.Model):
 
 
 class Actions(models.Model):
+    class Meta:
+        verbose_name_plural = u'Акции'
+
     def __unicode__(self):
         return '%s' % self.header
 
