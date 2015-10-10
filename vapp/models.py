@@ -175,7 +175,7 @@ class Category(models.Model):
 
 class Assortiment(models.Model):
     class Meta:
-        verbose_name_plural = u'Ассортимент'
+        verbose_name_plural = u'Товар'
 
     def __unicode__(self):
         return '%s' % self.name
