@@ -640,7 +640,7 @@ div.news-block .news-row .news-row-in .date {
 
 #contact-page .x-content {
     float: right;
-    margin-right: 70px;
+    width: 55%;
     margin-top: 40px;
 }
 
@@ -648,7 +648,7 @@ div.news-block .news-row .news-row-in .date {
     float: left;
     margin-bottom: 40px;
     margin-top: 0;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 #contact-page #ymap > ymaps {
