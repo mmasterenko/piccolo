@@ -13,7 +13,7 @@ def get_assortiment_list(category_id, limit=None):
         d = {
             'img': assort.img.url,
             'name': assort.name.upper(),
-            'pcs_weight': str(assort.weight.normalize()),
+            'pcs_weight': str(assort.weight).rstrip('0').rstrip('.'),
             'weight_units': assort.weight_units,
             'pcs_per_box': str(assort.pcs) if assort.pcs else '',
             'shelf_life': str(assort.days),
